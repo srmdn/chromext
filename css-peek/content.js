@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var tooltip, overlay, active = true;
+  var tooltip, active = true;
 
   function buildCSSSelector(el) {
     if (!el || el === document.body || el === document.documentElement) return el?.tagName?.toLowerCase() || "";
@@ -18,7 +18,7 @@
       );
       if (siblings.length > 1) {
         var idx = siblings.indexOf(current) + 1;
-        tag += ":nth-child(" + idx + ")";
+        tag += ":nth-of-type(" + idx + ")";
       }
       path.unshift(tag);
       current = current.parentNode;
@@ -31,7 +31,7 @@
   }
 
   function shortHex(color) {
-    if (!color || color === "rgba(0, 0, 0, 0)" || color === "transparent") return "—";
+    if (!color || color === "rgba(0, 0, 0, 0)" || color === "transparent") return "\u2014";
     return color;
   }
 
@@ -51,7 +51,7 @@
       '</div>' +
       '<div class="cp-section">' +
         '<div class="cp-row"><span>Display</span><span>' + style.display + '</span></div>' +
-        '<div class="cp-row"><span>Size</span><span>' + el.offsetWidth + ' × ' + el.offsetHeight + '</span></div>' +
+        '<div class="cp-row"><span>Size</span><span>' + el.offsetWidth + ' \u00d7 ' + el.offsetHeight + '</span></div>' +
         '<div class="cp-row"><span>Position</span><span>' + style.position + '</span></div>' +
       '</div>' +
       '<div class="cp-section cp-box">' +
@@ -104,38 +104,44 @@
     }
   }
 
+  function onKeyDown(e) {
+    if (!active) return;
+    if (e.key === "Escape") {
+      destroy();
+    }
+  }
+
   function start() {
     if (tooltip) return;
+    var existing = document.getElementById("css-peek-tooltip");
+    if (existing) existing.remove();
     tooltip = document.createElement("div");
     tooltip.id = "css-peek-tooltip";
     document.body.appendChild(tooltip);
     active = true;
     document.addEventListener("mousemove", onMouseMove, true);
     document.addEventListener("click", onClick, true);
-  }
-
-  function stop() {
-    active = false;
-    if (tooltip) {
-      hideTooltip();
-    }
+    document.addEventListener("keydown", onKeyDown, true);
   }
 
   function destroy() {
-    stop();
+    active = false;
+    hideTooltip();
     document.removeEventListener("mousemove", onMouseMove, true);
     document.removeEventListener("click", onClick, true);
+    document.removeEventListener("keydown", onKeyDown, true);
     if (tooltip) {
       tooltip.remove();
       tooltip = null;
     }
   }
 
-  chrome.runtime.onMessage.addListener(function (msg) {
+  function onMessage(msg, sender, sendResponse) {
     if (msg.text === "start") start();
-    else if (msg.text === "stop") stop();
     else if (msg.text === "destroy") destroy();
-  });
+    else if (msg.text === "ping" && tooltip && active) sendResponse("pong");
+  }
 
+  chrome.runtime.onMessage.addListener(onMessage);
   start();
 })();
