@@ -91,11 +91,27 @@ function scanText(text) {
 }
 
 function maskText(text, findings) {
+  const ranges = findings
+    .map((f) => ({ start: f.start, end: f.start + f.value.length }))
+    .sort((a, b) => a.start - b.start);
+
+  const merged = [];
+  for (const r of ranges) {
+    if (merged.length === 0) {
+      merged.push(r);
+      continue;
+    }
+    const last = merged[merged.length - 1];
+    if (r.start <= last.end) {
+      last.end = Math.max(last.end, r.end);
+    } else {
+      merged.push(r);
+    }
+  }
+
   let masked = text;
-  for (const f of findings.sort((a, b) => b.start - a.start)) {
-    const before = masked.substring(0, f.start);
-    const after = masked.substring(f.start + f.value.length);
-    masked = before + "[REDACTED]" + after;
+  for (const r of merged.reverse()) {
+    masked = masked.substring(0, r.start) + "[REDACTED]" + masked.substring(r.end);
   }
   return masked;
 }
