@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Dark Theme Settings</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Translate Dark</h1>
+      <p class="subtitle">Calm, very-dark theme for Google Translate</p>
+
+      <div class="section">
+        <label class="label">Accent color</label>
+        <div class="color-grid" id="colorGrid"></div>
+      </div>
+
+      <div class="section preview-section">
+        <label class="label">Preview</label>
+        <div class="preview-box">
+          <div class="preview-text">
+            <span class="preview-label">Input</span>
+            <div class="preview-input">Hello, world</div>
+          </div>
+          <div class="preview-text">
+            <span class="preview-label">Output</span>
+            <div class="preview-output">Halo, dunia</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="footer-note">Changes apply instantly to open tabs</p>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
