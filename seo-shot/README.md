@@ -26,6 +26,10 @@ Instant on-page SEO snapshot. Score out of 100 with actionable fixes. No API nee
 3. Click the extension icon
 4. Get your score and checklist
 
+## Known behavior
+
+Archive pages, category listings, and tag pages typically score lower than single posts. This is expected: WordPress and similar CMS platforms rarely generate unique meta descriptions, OG tags, or optimized titles for archive views. SEO Shot scores what's actually on the page — low scores on archives are correct, not a bug.
+
 ## Install
 
 ```
