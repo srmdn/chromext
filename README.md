@@ -2,6 +2,19 @@
 
 A monorepo of free, open-source Chrome extensions for solo builders.
 
+## Why
+
+I'm a solo builder. I ship products alone. Every extension I install is a trust decision — it can read my tabs, my clipboard, my network. The Chrome Web Store is full of closed-source extensions with "Read and change all data on all websites" permissions and no way to verify what they actually do.
+
+So I build my own. Every extension in this repo:
+
+- **Requests only what it needs** — no broad permissions, no "all websites"
+- **Makes zero external network calls** — no analytics, no tracking, no telemetry
+- **Is inspectable in minutes** — small codebases, plain JavaScript, no bundlers
+- **Ships on day one** — built to pass Chrome Web Store review immediately
+
+If you're a solo builder too, you can use these as-is, fork them, or read the source to see exactly how they work before you trust them.
+
 ## Extensions
 
 | Extension | Description | Permissions |
