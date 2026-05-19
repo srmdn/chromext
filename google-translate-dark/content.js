@@ -1,4 +1,12 @@
-chrome.runtime.sendMessage({ text: "updateMode" }).catch(() => {});
+function sendMsg(msg) {
+  try { chrome.runtime.sendMessage(msg).catch(() => {}); } catch (_) {}
+}
+
+function getURL(path) {
+  try { return chrome.runtime.getURL(path); } catch (_) { return ""; }
+}
+
+sendMsg({ text: "updateMode" });
 
 if (document.readyState === "loading") {
   window.addEventListener("DOMContentLoaded", afterWindowLoaded);
@@ -15,18 +23,17 @@ function afterWindowLoaded() {
 
   btn.addEventListener("click", function () {
     btn.classList.add("jello");
-    chrome.runtime.sendMessage({ text: "darkMode" }).catch(() => {}).finally(() => {
-      setTimeout(function () {
-        btn.classList.remove("jello");
-      }, 1000);
-    });
+    sendMsg({ text: "darkMode" });
+    setTimeout(function () {
+      btn.classList.remove("jello");
+    }, 1000);
   });
 
   var header = document.querySelector("header > div:nth-child(2)");
   if (header) {
     header.prepend(btn);
   }
-  chrome.runtime.sendMessage({ text: "updateBtnBackground" }).catch(() => {});
+  sendMsg({ text: "updateBtnBackground" });
 }
 
 chrome.runtime.onMessage.addListener(function (msg) {
@@ -34,11 +41,11 @@ chrome.runtime.onMessage.addListener(function (msg) {
     var isDarkMode = msg.isDarkMode;
     var imageURL;
     if (isDarkMode) {
-      imageURL = chrome.runtime.getURL("./icons/moon-solid.svg");
+      imageURL = getURL("./icons/moon-solid.svg");
     } else {
-      imageURL = chrome.runtime.getURL("./icons/sun-solid.svg");
+      imageURL = getURL("./icons/sun-solid.svg");
     }
-    if (btn) {
+    if (btn && imageURL) {
       btn.style.backgroundImage = 'url("' + imageURL + '")';
     }
   }

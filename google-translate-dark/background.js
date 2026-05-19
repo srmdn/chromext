@@ -29,13 +29,22 @@ function changeMode(isDarkMode, alterIsDarkMode) {
         target: { tabId: tab.id },
         files: ["./darkmode.css"],
       }).catch(() => {});
+      chrome.scripting.insertCSS({
+        target: { tabId: tab.id },
+        files: ["./lightmode.css"],
+      }).catch(() => {});
     } else {
+      chrome.scripting.removeCSS({
+        target: { tabId: tab.id },
+        files: ["./lightmode.css"],
+      }).catch(() => {});
       chrome.scripting.insertCSS({
         target: { tabId: tab.id },
         files: ["./darkmode.css"],
       }).catch(() => {});
-      injectAccentCSS(tab.id);
     }
+
+    injectAccentCSS(tab.id);
 
     chrome.storage.local.set({ isDarkMode: isDarkMode });
     updateBtnBackground(isDarkMode);
@@ -56,7 +65,7 @@ function updateBtnBackground(isDarkMode) {
 
 function getDarkModeValue() {
   return new Promise((resolve) => {
-    chrome.storage.local.get({ isDarkMode: 0 }, (res) => {
+    chrome.storage.local.get({ isDarkMode: 1 }, (res) => {
       resolve(res.isDarkMode);
     });
   });
@@ -80,14 +89,4 @@ function injectAccentCSS(tabId, newColor) {
   }
 }
 
-function getDomain(url) {
-  if (!url) return null;
-  const withoutProtocol = url.toString().replace(/^https?:\/\//i, "");
-  if (withoutProtocol.charAt(0) === "/") return null;
-  const match = withoutProtocol.match(/^[^/:]+/);
-  if (!match) return null;
-  const parts = match[0].split(".");
-  const domain = parts.slice(0, 2).join(".");
-  const tld = parts.slice(2).join(".");
-  return { domain, tld };
-}
+

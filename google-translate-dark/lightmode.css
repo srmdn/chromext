@@ -1,0 +1,189 @@
+:root {
+  --highlight-color: var(--gt-accent-color, #1a73e8);
+  --highlight-color12: color-mix(in srgb, var(--highlight-color) 12%, transparent);
+  --highlight-color30: color-mix(in srgb, var(--highlight-color) 30%, transparent);
+}
+
+/* ── Warm off-white background ── */
+.pGxpHc header,
+.RvYhPd,
+.ccvoYb,
+.P6w8m,
+.I87fLc.XzOhkf,
+.SMqeCb,
+.jTj8gd.XzOhkf .a2Icud,
+.Bcbxbe.FwR7Pc,
+.k5v5Nb,
+.qSb8Pe.KKjvXb,
+.qSb8Pe:hover,
+.EHzcec,
+.GKdr2,
+.nbesI,
+.AzKM4,
+.DLAnyc,
+.NBY4Kb,
+.VfPpkd-xl07Ob-XxIAqe,
+.j27i7,
+.gb_Dc,
+.LpQB8e,
+.Usd1Ac,
+.DNFg3e,
+.BAZ5oe,
+.zLmSvf,
+.MmZJl,
+.gb_Hc,
+.CLKk4c,
+.gb_Mc .gb_Ic,
+.Pt010b .a2Icud,
+.gb_Kc,
+.dOQF4b,
+.CMhTbb,
+.gb_Oc,
+.ydsGXd,
+.VfPpkd-Bz112c-LgbsSe,
+.qt6jm,
+c-wiz,
+.a2Icud,
+.jTj8gd,
+.vPHZid,
+.kmXzdf,
+.eSogib,
+.QcsUad:not(.sMVRZe):not(.VfPpkd-ksKsZd-mWPk3d)::after,
+.MOkH4e,
+.GAyS9e,
+.U0xwnf::after {
+  background-color: #faf9f7 !important;
+  background: #faf9f7 !important;
+}
+
+/* ── Slightly darker raised surfaces ── */
+.RvYhPd::before,
+.ySES5,
+.KjuTac,
+.bvzp8c,
+.yFQBKb,
+.fMHXgc,
+.PG9puc,
+.yJWPX:hover {
+  background-color: #f0ede8 !important;
+}
+
+.P6w8m.BDJ8fb:not(.Jj6Lae) {
+  background-color: #ffffff !important;
+}
+
+/* Language selection gradient */
+.X4DQ0::after {
+  background-image: linear-gradient(to right, transparent, #faf9f7) !important;
+}
+
+/* ── Accent-colored elements (override Google blue) ── */
+.ksE5nf.EiZ8Dd,
+.y9jKHb,
+.VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc::before,
+.VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc::after,
+.Rj2Mlf .VfPpkd-Jh9lGc::before,
+.Rj2Mlf .VfPpkd-Jh9lGc::after,
+.VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc::before,
+.VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc::after,
+.yUUmWd.VfPpkd-AznF2e-OWXEXe-auswjd .VfPpkd-YVzG2b::before,
+.yUUmWd.VfPpkd-AznF2e-OWXEXe-auswjd .VfPpkd-YVzG2b::after,
+.Pk9dvb:not(:disabled),
+.CQQi5b {
+  background-color: var(--highlight-color) !important;
+}
+
+.BSw7K.iYelWb .irkilc:not(:disabled),
+.BSw7K.MFKVse .hL2wFc:not(:disabled),
+.BSw7K.H4CMrb .aiUxpf:not(:disabled),
+.VfPpkd-LgbsSe:hover,
+.kwsPce:not(:disabled),
+.VfPpkd-Jh9lGc:hover,
+.oJweqc.KKjvXb,
+.oJweqc:hover,
+.ksBjEc:not(:disabled),
+.BSw7K.Vkm6Re .NMQgkb:not(:disabled) {
+  background-color: var(--highlight-color12) !important;
+}
+
+.JLqJ4b.C1N51c,
+.JLqJ4b:hover,
+.kgnlhe.FwR7Pc,
+.MtFg0.FwR7Pc {
+  background-color: var(--highlight-color30) !important;
+}
+
+/* ── Accent-colored text (override Google blue) ── */
+.yUUmWd.VfPpkd-AznF2e-OWXEXe-auswjd .VfPpkd-YVzG2b,
+.yUUmWd.VfPpkd-AznF2e-OWXEXe-auswjd .VfPpkd-YVzG2b,
+.ODAbH,
+.eIKIse,
+.jodjCb,
+.mvqA2c,
+.ksBjEc:not(:disabled),
+a,
+.dgYHDb .VfPpkd-StrnGf-rymPhb-f7MjDc,
+.PrVWEc,
+.kihvAe,
+.zpaZf,
+.cfWmIb.VfPpkd-fmcmS-yrriRe-OWXEXe-XpnDCe:not(.VfPpkd-fmcmS-yrriRe-OWXEXe-OWB6Me)
+  .VfPpkd-NLUYnc-V67aGc {
+  color: var(--highlight-color) !important;
+}
+
+/* ── Accent-colored borders ── */
+.Rj2Mlf:not(:disabled),
+.PRdtG .VfPpkd-AznF2e-wEcVzc-OWXEXe-NowJzb,
+.lSo1Re .co39ub,
+.lSo1Re .Cn087,
+.lSo1Re .hfsr6b,
+.lSo1Re .EjXFBf,
+.ksBjEc .VfPpkd-Jh9lGc::before,
+.ksBjEc .VfPpkd-Jh9lGc::after,
+.cfWmIb
+  .VfPpkd-fmcms-yrriRe-OWXEXeXpnoCe:not(.VfPpkd-fmcms-yrriRe-OWXEXE-OWB6Me)
+  .VfPpkd-NSFCdd-MpmGFe,
+.cfWmIb.VfPpkd-fmcmS-yrriRe-OWXEXe-XpnDCe:not(.VfPpkd-fmcmS-yrriRe-OWXEXe-OWB6Me)
+  * {
+  border-color: var(--highlight-color) !important;
+}
+
+/* ── Caret, pressed state, stroke ── */
+.cfWmIb .VfPpkd-fmcmS-wGMbrd {
+  caret-color: var(--highlight-color) !important;
+}
+
+.a8FIud.X0rvP .X86VN[aria-pressed="true"] {
+  color: var(--highlight-color) !important;
+}
+
+.DU29of .VfPpkd-JGcpL-uI4vCe-LkdAo,
+.DU29of .VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G {
+  stroke: var(--highlight-color) !important;
+}
+
+/* ── Misc ── */
+.hgbeOc {
+  position: static !important;
+}
+
+.NBY4Kb {
+  color: var(--highlight-color) !important;
+}
+
+.MOKH4E.MFKVse .X2ZoU:not(:disabled),
+.MOKH4E.Vkm6Re .MxWhHf:not(:disabled),
+.MOKH4E.iYelWb .GyPTPe:not(:disabled),
+.MOKH4E.H4CMrb .Ft4sJe:not(:disabled) {
+  background: none !important;
+  border: 1px solid var(--highlight-color) !important;
+}
+
+.QcsUad {
+  border: none;
+  background-color: #ebe8e3 !important;
+}
+
+.s0ijVb .VfPpkd-Bz112c-LgbsSe {
+  background: #f0ede8 !important;
+}
