@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>SEO Shot</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container" id="app">
+      <div class="loading" id="loading">
+        <div class="spinner"></div>
+        <p>Scanning page...</p>
+      </div>
+      <div class="results" id="results" hidden>
+        <div class="score-section">
+          <div class="score-circle" id="scoreCircle">
+            <span class="score-value" id="scoreValue">—</span>
+            <span class="score-label">/100</span>
+          </div>
+          <div class="score-meta">
+            <span class="url" id="pageUrl"></span>
+          </div>
+        </div>
+        <div class="checks" id="checks"></div>
+        <button class="rescan-btn" id="rescanBtn">Rescan</button>
+      </div>
+      <div class="error" id="error" hidden>
+        <p>Could not scan this page.</p>
+        <p class="error-hint">Try refreshing the page and clicking again.</p>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

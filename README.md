@@ -6,6 +6,7 @@ A monorepo of free, open-source Chrome extensions for solo builders.
 
 | Extension | Description | Permissions |
 |---|---|---|
+| [seo-shot](./seo-shot) | Instant on-page SEO snapshot. 12 checks, score out of 100. Pure DOM — no API. | `activeTab`, `scripting` |
 | [pasteguard](./pasteguard) | Stop pasting API keys and secrets into AI chats. Warns, masks, or blocks. 15 detection patterns across 14 AI sites. | `storage`, `scripting`, `activeTab` |
 | [google-translate-dark](./google-translate-dark) | Calm, very-dark theme for Google Translate. Toggle button + 8-color accent picker. | `storage`, `scripting` |
 
@@ -16,6 +17,14 @@ chromext/
 ├── README.md
 ├── LICENSE
 ├── .gitignore
+├── seo-shot/                 # Each extension is self-contained
+│   ├── README.md
+│   ├── manifest.json
+│   ├── popup/
+│   │   ├── popup.html
+│   │   ├── popup.js           # 12 checks, scoring engine
+│   │   └── popup.css
+│   └── icons/
 ├── pasteguard/               # Each extension is self-contained
 │   ├── README.md
 │   ├── manifest.json
