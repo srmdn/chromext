@@ -17,7 +17,6 @@
     "*://chat.openai.com/*",
     "*://claude.ai/*",
     "*://gemini.google.com/*",
-    "*://gemini.google.com/*",
     "*://copilot.microsoft.com/*",
     "*://github.com/copilot/*",
     "*://bard.google.com/*",
@@ -25,7 +24,15 @@
     "*://chat.deepseek.com/*",
     "*://perplexity.ai/*",
     "*://poe.com/*",
-    "*://you.com/*"
+    "*://you.com/*",
+    "*://chat.mistral.ai/*",
+    "*://huggingface.co/*",
+    "*://groq.com/*",
+    "*://grok.com/*",
+    "*://x.ai/*",
+    "*://cursor.com/*",
+    "*://v0.dev/*",
+    "*://bolt.new/*"
   ],
   "content_scripts": [
     {
@@ -41,7 +48,15 @@
         "*://deepseek.com/*",
         "*://perplexity.ai/*",
         "*://poe.com/*",
-        "*://you.com/*"
+        "*://you.com/*",
+        "*://chat.mistral.ai/*",
+        "*://huggingface.co/*",
+        "*://groq.com/*",
+        "*://grok.com/*",
+        "*://x.ai/*",
+        "*://cursor.com/*",
+        "*://v0.dev/*",
+        "*://bolt.new/*"
       ],
       "js": ["patterns.js", "content.js"],
       "css": ["content.css"],

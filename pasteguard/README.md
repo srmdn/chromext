@@ -8,7 +8,7 @@ Scans your clipboard when you paste into AI chat interfaces (ChatGPT, Claude, Ge
 
 ## Protected sites
 
-ChatGPT, Claude, Gemini, Copilot, DeepSeek, Perplexity, Poe, You.com
+ChatGPT, Claude, Gemini, Copilot, DeepSeek, Perplexity, Poe, You.com, Mistral, HuggingFace Chat, Groq, Grok, xAI, Cursor, v0, Bolt
 
 ## Detected secrets
 

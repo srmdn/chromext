@@ -7,7 +7,7 @@ A monorepo of free, open-source Chrome extensions for solo builders.
 | Extension | Description | Permissions |
 |---|---|---|
 | [seo-shot](./seo-shot) | Instant on-page SEO snapshot. 12 checks, score out of 100. Pure DOM — no API. | `activeTab`, `scripting` |
-| [pasteguard](./pasteguard) | Stop pasting API keys and secrets into AI chats. Warns, masks, or blocks. 15 detection patterns across 14 AI sites. | `storage`, `scripting`, `activeTab` |
+| [pasteguard](./pasteguard) | Stop pasting API keys and secrets into AI chats. Warns, masks, or blocks. 15 patterns across 20 AI sites. | `storage`, `scripting`, `activeTab` |
 | [google-translate-dark](./google-translate-dark) | Calm, very-dark theme for Google Translate. Toggle button + 8-color accent picker. | `storage`, `scripting` |
 
 ## Structure
