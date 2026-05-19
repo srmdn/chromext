@@ -66,6 +66,10 @@ chromext/
 - **MIT licensed** — use, modify, ship freely
 - **Self-documenting** — each extension has its own README
 
+## Publishing
+
+All extensions are Chrome Web Store ready. See [STORE.md](./STORE.md) for pre-written descriptions and screenshot guides. See [PRIVACY.md](./PRIVACY.md) for the shared privacy policy (link this in the CWS dashboard).
+
 ## Setup
 
 Each extension is independent. Load any as an unpacked extension:
