@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" fill="none">
+  <rect width="128" height="128" rx="24" fill="#1a1b1e"/>
+  <rect x="24" y="32" width="80" height="64" rx="8" stroke="#8ab4f8" stroke-width="4" fill="none"/>
+  <path d="M24 48 L104 48" stroke="#8ab4f8" stroke-width="3"/>
+  <circle cx="40" cy="40" r="4" fill="#ea4335"/>
+  <circle cx="56" cy="40" r="4" fill="#fbbc04"/>
+  <circle cx="72" cy="40" r="4" fill="#34a853"/>
+  <text x="64" y="88" text-anchor="middle" font-family="monospace" font-size="14" fill="#8ab4f8" font-weight="bold">chromext</text>
+</svg>

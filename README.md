@@ -68,7 +68,7 @@ chromext/
 
 ## Publishing
 
-All extensions are Chrome Web Store ready. See [STORE.md](./STORE.md) for pre-written descriptions and screenshot guides. See [PRIVACY.md](./PRIVACY.md) for the shared privacy policy (link this in the CWS dashboard).
+All extensions are Chrome Web Store ready. See the [landing page](https://srmdn.github.io/chromext/) for descriptions and the [privacy policy](https://srmdn.github.io/chromext/privacy) to link in the CWS dashboard.
 
 ## Setup
 
