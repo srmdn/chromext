@@ -43,7 +43,7 @@
         "*://poe.com/*",
         "*://you.com/*"
       ],
-      "js": ["content.js"],
+      "js": ["patterns.js", "content.js"],
       "css": ["content.css"],
       "run_at": "document_end"
     }
