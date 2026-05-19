@@ -36,6 +36,7 @@ export default defineConfig({
     nav: [
       { text: "Extensions", link: "/#extensions" },
       { text: "Screenshots", link: "/screenshots" },
+      { text: "Icon Guide", link: "/icons" },
       { text: "Privacy", link: "/privacy" },
       { text: "GitHub", link: "https://github.com/srmdn/chromext" },
     ],
