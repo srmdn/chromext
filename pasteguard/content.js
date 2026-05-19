@@ -72,8 +72,14 @@ function scanText(text) {
 
       if (rule.condition && !rule.condition(match)) continue;
 
-      if (findings.some((f) => f.start === match.index && f.value === value))
+      if (findings.some((f) => f.start === start && f.value === value))
         continue;
+
+      let start = match.index;
+      if (rule.maskGroup > 1) {
+        const offset = match[0].indexOf(value);
+        if (offset !== -1) start += offset;
+      }
 
       const displayValue =
         value.length > 40 ? value.substring(0, 20) + "..." + value.slice(-10) : value;
@@ -82,7 +88,7 @@ function scanText(text) {
         rule: rule.name,
         value: value,
         display: displayValue,
-        start: match.index,
+        start: start,
       });
     }
   }
