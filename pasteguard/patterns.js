@@ -35,11 +35,6 @@ const PATTERNS = [
     maskGroup: 1,
   },
   {
-    name: "AWS Secret Key",
-    pattern: /\b([A-Za-z0-9+/]{40})\b/g,
-    maskGroup: 1,
-  },
-  {
     name: "Google API Key",
     pattern: /\b(AIza[0-9A-Za-z_-]{35})\b/g,
     maskGroup: 1,
