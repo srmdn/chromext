@@ -1,15 +1,21 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-  <!-- 96px green circle centered -->
-  <circle cx="64" cy="64" r="48" fill="#43a047"/>
-  <!-- shield -->
-  <path d="M64 30 L88 40 L88 66 Q88 88 64 100 Q40 88 40 66 L40 40 Z" 
-        fill="none" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
-  <!-- lock body -->
-  <rect x="56" y="54" width="16" height="12" rx="2.5" fill="#fff"/>
-  <!-- lock shackle -->
-  <path d="M59 54 L59 48 Q59 44 64 44 Q69 44 69 48 L69 54" 
-        fill="none" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
-  <!-- keyhole -->
-  <circle cx="64" cy="60" r="2.5" fill="#43a047"/>
-  <rect x="63" y="60" width="2" height="3.5" fill="#43a047"/>
+  <defs>
+    <linearGradient id="guardBg" x1="18" y1="16" x2="110" y2="112" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#57c96d"/>
+      <stop offset="1" stop-color="#18743a"/>
+    </linearGradient>
+    <linearGradient id="guardSheen" x1="26" y1="20" x2="92" y2="90" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(64 64) scale(1.103448)">
+    <rect x="-58" y="-58" width="116" height="116" rx="30" fill="url(#guardBg)"/>
+    <path d="M0 -37 L31 -25 V2 C31 27 17 48 0 57 C-17 48 -31 27 -31 2 V-25 Z" fill="url(#guardSheen)"/>
+    <path d="M0 -34 L29 -22 V3 C29 26 16 45 0 54 C-16 45 -29 26 -29 3 V-22 Z" fill="none" stroke="#fff" stroke-width="6" stroke-linejoin="round"/>
+    <rect x="-18" y="-5" width="36" height="28" rx="7" fill="#fff"/>
+    <path d="M-10 -5 V-15 C-10 -22 -5 -27 0 -27 C5 -27 10 -22 10 -15 V-5" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round"/>
+    <path d="M-8 8 L-2 14 L10 2" fill="none" stroke="#18743a" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="0" cy="9" r="3.5" fill="#18743a"/>
+  </g>
 </svg>
