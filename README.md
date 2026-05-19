@@ -5,7 +5,8 @@ A monorepo of free, open-source Chrome extensions for solo builders.
 ## Extensions
 
 | Extension | Description | Status |
-|---|---|---|
+|---|---|---|---|
+| [pasteguard](./pasteguard) | Prevent pasting API keys and secrets into AI chats | ✅ v1.0.0 |
 | [google-translate-dark](./google-translate-dark) | Calm, very-dark theme for Google Translate with accent color picker | ✅ v1.0.0 |
 
 ## Philosophy

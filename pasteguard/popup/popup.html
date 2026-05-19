@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>PasteGuard</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <span class="logo">&#128737;</span>
+        <h1 class="title">PasteGuard</h1>
+      </div>
+
+      <div class="section">
+        <div class="toggle-row">
+          <span class="label">Protection</span>
+          <label class="switch">
+            <input type="checkbox" id="enabledToggle" checked />
+            <span class="slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="label">When secrets detected</span>
+        <div class="radio-group">
+          <label class="radio">
+            <input type="radio" name="action" value="warn" checked />
+            <span>Warn &amp; ask</span>
+          </label>
+          <label class="radio">
+            <input type="radio" name="action" value="block" />
+            <span>Block completely</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="section">
+        <span class="label">Protected sites</span>
+        <div class="site-list">
+          <span class="site-chip">ChatGPT</span>
+          <span class="site-chip">Claude</span>
+          <span class="site-chip">Gemini</span>
+          <span class="site-chip">Copilot</span>
+          <span class="site-chip">DeepSeek</span>
+          <span class="site-chip">Perplexity</span>
+        </div>
+      </div>
+
+      <div class="stats">
+        <span class="stat-value" id="caughtCount">0</span>
+        <span class="stat-label">secrets caught</span>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>
