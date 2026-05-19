@@ -5,6 +5,8 @@ chrome.runtime.onMessage.addListener((msg) => {
     getDarkModeValue().then((isDarkMode) => changeMode(isDarkMode, false));
   } else if (msg.text === "updateBtnBackground") {
     getDarkModeValue().then((isDarkMode) => updateBtnBackground(isDarkMode));
+  } else if (msg.text === "accentChanged") {
+    if (msg.tabId) injectAccentCSS(msg.tabId, msg.color);
   }
 });
 
@@ -32,6 +34,7 @@ function changeMode(isDarkMode, alterIsDarkMode) {
         target: { tabId: tab.id },
         files: ["./darkmode.css"],
       }).catch(() => {});
+      injectAccentCSS(tab.id);
     }
 
     chrome.storage.local.set({ isDarkMode: isDarkMode });
@@ -57,6 +60,24 @@ function getDarkModeValue() {
       resolve(res.isDarkMode);
     });
   });
+}
+
+function injectAccentCSS(tabId, newColor) {
+  const colorToUse = newColor;
+  const inject = (color) => {
+    chrome.scripting.insertCSS({
+      target: { tabId },
+      css: `:root{--gt-accent-color:${color}}`,
+    }).catch(() => {});
+  };
+
+  if (colorToUse) {
+    inject(colorToUse);
+  } else {
+    chrome.storage.sync.get({ accentColor: "#58a6ff" }, (data) => {
+      inject(data.accentColor);
+    });
+  }
 }
 
 function getDomain(url) {

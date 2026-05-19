@@ -29,7 +29,14 @@
       }
 
       swatch.addEventListener("click", () => {
-        chrome.storage.sync.set({ accentColor: color.hex });
+        const newColor = color.hex;
+        chrome.storage.sync.set({ accentColor: newColor });
+        chrome.tabs.query({ active: true, lastFocusedWindow: true }, (tabs) => {
+          const tabId = tabs?.[0]?.id;
+          if (tabId) {
+            chrome.runtime.sendMessage({ text: "accentChanged", color: newColor, tabId });
+          }
+        });
 
         document
           .querySelectorAll(".color-swatch")

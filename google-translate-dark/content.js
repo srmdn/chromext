@@ -1,17 +1,3 @@
-function applyAccentColor() {
-  chrome.storage.sync.get({ accentColor: "#62a6f3" }, function (data) {
-    document.documentElement.style.setProperty("--gt-accent-color", data.accentColor);
-  });
-}
-
-applyAccentColor();
-
-chrome.storage.onChanged.addListener(function (changes, area) {
-  if (area === "sync" && changes.accentColor) {
-    document.documentElement.style.setProperty("--gt-accent-color", changes.accentColor.newValue);
-  }
-});
-
 chrome.runtime.sendMessage({ text: "updateMode" }).catch(() => {});
 
 if (document.readyState === "loading") {
