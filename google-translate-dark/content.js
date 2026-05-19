@@ -12,7 +12,7 @@ chrome.storage.onChanged.addListener(function (changes, area) {
   }
 });
 
-chrome.runtime.sendMessage({ text: "updateMode" });
+chrome.runtime.sendMessage({ text: "updateMode" }).catch(() => {});
 
 if (document.readyState === "loading") {
   window.addEventListener("DOMContentLoaded", afterWindowLoaded);
@@ -29,7 +29,7 @@ function afterWindowLoaded() {
 
   btn.addEventListener("click", function () {
     btn.classList.add("jello");
-    chrome.runtime.sendMessage({ text: "darkMode" }, function () {
+    chrome.runtime.sendMessage({ text: "darkMode" }).catch(() => {}).finally(() => {
       setTimeout(function () {
         btn.classList.remove("jello");
       }, 1000);
@@ -40,7 +40,7 @@ function afterWindowLoaded() {
   if (header) {
     header.prepend(btn);
   }
-  chrome.runtime.sendMessage({ text: "updateBtnBackground" });
+  chrome.runtime.sendMessage({ text: "updateBtnBackground" }).catch(() => {});
 }
 
 chrome.runtime.onMessage.addListener(function (msg) {

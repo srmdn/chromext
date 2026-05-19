@@ -17,19 +17,21 @@ function changeMode(isDarkMode, alterIsDarkMode) {
   }
 
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const tabId = tabs[0]?.id;
-    if (!tabId) return;
+    const tab = tabs[0];
+    if (!tab?.id) return;
+
+    if (tab.url && tab.url.startsWith("chrome://")) return;
 
     if (!isDarkMode) {
       chrome.scripting.removeCSS({
-        target: { tabId: tabId },
+        target: { tabId: tab.id },
         files: ["./darkmode.css"],
-      });
+      }).catch(() => {});
     } else {
       chrome.scripting.insertCSS({
-        target: { tabId: tabId },
+        target: { tabId: tab.id },
         files: ["./darkmode.css"],
-      });
+      }).catch(() => {});
     }
 
     chrome.storage.local.set({ isDarkMode: isDarkMode });
@@ -39,12 +41,13 @@ function changeMode(isDarkMode, alterIsDarkMode) {
 
 function updateBtnBackground(isDarkMode) {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-    const tabId = tabs[0]?.id;
-    if (!tabId) return;
-    chrome.tabs.sendMessage(tabId, {
+    const tab = tabs[0];
+    if (!tab?.id) return;
+    if (tab.url && tab.url.startsWith("chrome://")) return;
+    chrome.tabs.sendMessage(tab.id, {
       text: "updateBtnBackground",
       isDarkMode: isDarkMode,
-    });
+    }).catch(() => {});
   });
 }
 
