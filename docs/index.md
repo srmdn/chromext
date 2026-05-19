@@ -26,6 +26,17 @@ features:
 ## Extensions
 
 <div class="ext-card">
+  <h3>👁️ CSS Peek</h3>
+  <p>Hover any element to see its CSS properties. Box model, fonts, colors — right there without opening DevTools. Click to copy a unique selector.</p>
+  <p><strong>Inspected properties</strong> — tag + classes, box model (M/B/P/C), font stack + size + weight, colors with swatches, display type, dimensions.</p>
+  <div class="ext-perms">
+    <span class="perm-badge">activeTab</span>
+    <span class="perm-badge">scripting</span>
+  </div>
+  <p style="margin-top: 12px"><a href="https://github.com/srmdn/chromext/tree/master/css-peek">Source →</a></p>
+</div>
+
+<div class="ext-card">
   <h3>🛡️ PasteGuard</h3>
   <p>Stop pasting API keys and secrets into AI chats. Scans your clipboard when you paste into ChatGPT, Claude, Gemini, and 17 other AI sites. Warns, masks, or blocks before you leak credentials.</p>
   <p><strong>15 detection patterns</strong> — OpenAI, Anthropic, GitHub, Stripe, AWS keys, JWTs, private keys, database URLs, .env assignments.</p>

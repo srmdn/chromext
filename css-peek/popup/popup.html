@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>CSS Peek</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">CSS Peek</h1>
+      <p class="subtitle">Hover over elements to inspect styles</p>
+
+      <button id="toggleBtn" class="toggle-btn">
+        <span class="toggle-dot"></span>
+        <span id="toggleLabel" class="toggle-label">Start Inspecting</span>
+      </button>
+
+      <p class="hint">
+        Hover: see CSS properties<br>
+        Click: copy selector to clipboard
+      </p>
+
+      <p class="footer-note">No data collection. No network calls.</p>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,87 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 240px;
+  background-color: #0d1117;
+  color: #e6edf3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 13px;
+}
+
+.container {
+  padding: 16px;
+}
+
+.title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #7c4dff;
+  margin-bottom: 2px;
+}
+
+.subtitle {
+  font-size: 11px;
+  color: #8b949e;
+  margin-bottom: 14px;
+}
+
+.toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  background: #242528;
+  border: 1px solid #3c4043;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.toggle-btn:hover {
+  border-color: #7c4dff;
+}
+
+.toggle-btn.active {
+  background: #7c4dff20;
+  border-color: #7c4dff;
+}
+
+.toggle-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #3c4043;
+  transition: background 0.15s ease;
+  flex-shrink: 0;
+}
+
+.toggle-btn.active .toggle-dot {
+  background: #7c4dff;
+  box-shadow: 0 0 8px #7c4dff;
+}
+
+.toggle-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #e6edf3;
+}
+
+.hint {
+  font-size: 10px;
+  color: #6e7681;
+  margin-top: 12px;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.footer-note {
+  font-size: 10px;
+  color: #6e7681;
+  text-align: center;
+  margin-top: 10px;
+}

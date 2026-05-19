@@ -38,6 +38,12 @@ All code runs locally in your browser.
 Each extension requests only the minimum permissions needed:
 
 <div class="ext-card" style="margin-bottom: 16px">
+  <strong>CSS Peek</strong>
+  <p><code>activeTab</code> + <code>scripting</code> — inject inspector into the current tab on demand<br>
+  <code>storage</code> — reserved for future preferences</p>
+</div>
+
+<div class="ext-card" style="margin-bottom: 16px">
   <strong>PasteGuard</strong>
   <p><code>storage</code> — save your warn/block preference<br>
   <code>scripting</code> + <code>activeTab</code> — intercept paste events on AI chat sites</p>
@@ -64,6 +70,7 @@ We do not share, sell, or transfer any data to third parties because we do not c
 
 Every line of code is public. You can inspect exactly what each extension does:
 
+- [CSS Peek source](https://github.com/srmdn/chromext/tree/master/css-peek)
 - [PasteGuard source](https://github.com/srmdn/chromext/tree/master/pasteguard)
 - [SEO Shot source](https://github.com/srmdn/chromext/tree/master/seo-shot)
 - [Google Translate Dark source](https://github.com/srmdn/chromext/tree/master/google-translate-dark)
