@@ -1,10 +1,13 @@
 chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.sync.set({
-    enabled: true,
-    action: "warn",
+  chrome.storage.sync.get(["enabled", "action"], (data) => {
+    if (data.enabled === undefined) {
+      chrome.storage.sync.set({ enabled: true, action: "warn" });
+    }
   });
-  chrome.storage.local.set({ caught: 0 });
-  updateBadge();
+  chrome.storage.local.get("caught", (data) => {
+    if (data.caught === undefined) chrome.storage.local.set({ caught: 0 });
+    updateBadge();
+  });
 });
 
 chrome.storage.onChanged.addListener((changes) => {

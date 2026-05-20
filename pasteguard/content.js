@@ -1,24 +1,30 @@
 let protectionEnabled = true;
 let actionMode = "warn";
 
-chrome.storage.sync.get({ enabled: true, action: "warn" }, (data) => {
-  protectionEnabled = data.enabled;
-  actionMode = data.action;
-  if (protectionEnabled) attachListeners();
-});
+try {
+  chrome.storage.sync.get({ enabled: true, action: "warn" }, (data) => {
+    try {
+      protectionEnabled = data.enabled;
+      actionMode = data.action;
+      if (protectionEnabled) attachListeners();
+    } catch (_) {}
+  });
+} catch (_) {}
 
 chrome.storage.onChanged.addListener((changes) => {
-  if (changes.enabled) {
-    protectionEnabled = changes.enabled.newValue;
-    if (protectionEnabled) {
-      attachListeners();
-    } else {
-      detachListeners();
+  try {
+    if (changes.enabled) {
+      protectionEnabled = changes.enabled.newValue;
+      if (protectionEnabled) {
+        attachListeners();
+      } else {
+        detachListeners();
+      }
     }
-  }
-  if (changes.action) {
-    actionMode = changes.action.newValue;
-  }
+    if (changes.action) {
+      actionMode = changes.action.newValue;
+    }
+  } catch (_) {}
 });
 
 let pasteHandler = null;

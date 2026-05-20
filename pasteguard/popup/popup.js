@@ -11,6 +11,12 @@ chrome.storage.local.get({ caught: 0 }, (data) => {
   caughtCount.textContent = data.caught;
 });
 
+chrome.storage.onChanged.addListener((changes) => {
+  if (changes.caught) {
+    caughtCount.textContent = changes.caught.newValue;
+  }
+});
+
 enabledToggle.addEventListener("change", () => {
   chrome.storage.sync.set({ enabled: enabledToggle.checked });
 });
