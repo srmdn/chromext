@@ -42,27 +42,29 @@ function detachListeners() {
 }
 
 function handlePaste(event) {
-  const target = event.target;
-  if (!isEditable(target)) return;
+  try {
+    const target = event.target;
+    if (!isEditable(target)) return;
 
-  const clipboardData = event.clipboardData;
-  if (!clipboardData) return;
+    const clipboardData = event.clipboardData;
+    if (!clipboardData) return;
 
-  const text = clipboardData.getData("text/plain");
-  if (!text || text.length < 4) return;
+    const text = clipboardData.getData("text/plain");
+    if (!text || text.length < 4) return;
 
-  const findings = scanText(text);
-  if (findings.length === 0) return;
+    const findings = scanText(text);
+    if (findings.length === 0) return;
 
-  event.preventDefault();
-  event.stopPropagation();
+    event.preventDefault();
+    event.stopPropagation();
 
-  if (actionMode === "block") {
-    showBlockedOverlay(target, findings);
-    return;
-  }
+    if (actionMode === "block") {
+      showBlockedOverlay(target, findings);
+      return;
+    }
 
-  showWarningOverlay(target, text, findings);
+    showWarningOverlay(target, text, findings);
+  } catch (_) {}
 }
 
 function scanText(text) {
