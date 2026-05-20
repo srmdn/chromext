@@ -23,6 +23,16 @@
   border-bottom: 1px solid #3c4043;
 }
 
+.cp-breadcrumb {
+  display: block;
+  color: #6e7681;
+  font-size: 9px;
+  font-family: monospace;
+  margin-bottom: 4px;
+  word-break: break-all;
+  line-height: 1.4;
+}
+
 .cp-tag {
   font-weight: 600;
   color: #8ab4f8;
