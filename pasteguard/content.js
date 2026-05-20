@@ -253,7 +253,9 @@ function isEditable(element) {
 }
 
 function incrementCaught(count) {
-  chrome.storage.local.get({ caught: 0 }, (data) => {
-    chrome.storage.local.set({ caught: data.caught + count });
-  });
+  try {
+    chrome.storage.local.get({ caught: 0 }, (data) => {
+      chrome.storage.local.set({ caught: data.caught + count });
+    });
+  } catch (_) {}
 }
