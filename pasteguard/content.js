@@ -161,8 +161,8 @@ function showWarningOverlay(target, originalText, findings) {
 
   overlay.querySelector("#pg-mask").addEventListener("click", () => {
     removeExistingOverlay();
-    incrementCaught(findings.length);
     pasteInto(target, maskText(originalText, findings));
+    incrementCaught(findings.length);
   });
 
   overlay.querySelector("#pg-raw").addEventListener("click", () => {
