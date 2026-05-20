@@ -88,6 +88,10 @@ function runScanner() {
     results.push({ name, status: "fail", detail, points });
   }
 
+  function esc(str) {
+    return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
   try {
     const title = doc.querySelector("title");
     const titleText = title?.textContent?.trim() || "";
@@ -98,17 +102,17 @@ function runScanner() {
     } else if (titleLen < 30) {
       warn(
         "Title tag",
-        `Too short (${titleLen} chars). Aim for 50–60. Current: "${titleText}"`,
+        `Too short (${titleLen} chars). Aim for 50–60. Current: "${esc(titleText)}"`,
         5
       );
     } else if (titleLen > 70) {
       warn(
         "Title tag",
-        `Too long (${titleLen} chars). Aim for 50–60. Current: "${titleText.substring(0, 60)}…"`,
+        `Too long (${titleLen} chars). Aim for 50–60. Current: "${esc(titleText.substring(0, 60))}\u2026"`,
         5
       );
     } else {
-      pass("Title tag", `${titleLen} chars — good length. "${titleText}"`, 10);
+      pass("Title tag", `${titleLen} chars — good length. "${esc(titleText)}"`, 10);
     }
 
     const metaDesc = doc.querySelector('meta[name="description"]');
@@ -141,7 +145,7 @@ function runScanner() {
     } else {
       pass(
         "H1 heading",
-        `One H1 found: "${h1s[0].textContent.trim().substring(0, 60)}"`,
+        `One H1 found: "${esc(h1s[0].textContent.trim().substring(0, 60))}"`,
         10
       );
     }
@@ -250,7 +254,7 @@ function runScanner() {
     } else {
       pass(
         "Canonical URL",
-        `Present: <code>${canonicalHref.substring(0, 50)}</code>`,
+        `Present: <code>${esc(canonicalHref.substring(0, 50))}</code>`,
         10
       );
     }
@@ -266,7 +270,7 @@ function runScanner() {
         5
       );
     } else {
-      pass("Robots meta", `Set to: <code>${robotsContent}</code>`, 10);
+      pass("Robots meta", `Set to: <code>${esc(robotsContent)}</code>`, 10);
     }
 
     const jsonLd = doc.querySelectorAll('script[type="application/ld+json"]');
@@ -282,11 +286,11 @@ function runScanner() {
         types = Array.from(jsonLd)
           .map((el) => JSON.parse(el.textContent))
           .filter(Boolean)
-          .map((d) => d["@type"] || d["@graph"] ? "Graph" : "Unknown");
+          .map((d) => d["@type"] || (d["@graph"] ? "Graph" : "Unknown"));
       } catch (_) {}
       pass(
         "Structured data",
-        `${jsonLd.length} JSON-LD block(s) found${types.length ? ": " + types.slice(0, 3).join(", ") : ""}.`,
+        `${jsonLd.length} JSON-LD block(s) found${types.length ? ": " + types.slice(0, 3).map(esc).join(", ") : ""}.`,
         10
       );
     }
@@ -303,7 +307,7 @@ function runScanner() {
       if (vpContent.includes("width=device-width")) {
         pass("Mobile viewport", "Present with width=device-width — mobile-friendly.", 10);
       } else {
-        warn("Mobile viewport", "Found but missing width=device-width.", 5);
+        warn("Mobile viewport", `Found but missing width=device-width. Content: <code>${esc(vpContent)}</code>`, 5);
       }
     }
 
@@ -315,7 +319,7 @@ function runScanner() {
         5
       );
     } else {
-      pass("Language", `Set to <code>${htmlLang}</code>.`, 10);
+      pass("Language", `Set to <code>${esc(htmlLang)}</code>.`, 10);
     }
 
     const totalPoints = results.reduce((sum, r) => sum + r.points, 0);
@@ -331,7 +335,7 @@ function runScanner() {
         {
           name: "Scanner error",
           status: "fail",
-          detail: `Could not complete scan: ${e.message}. The page may have restricted access to its DOM.`,
+          detail: `Could not complete scan: ${esc(e.message)}. The page may have restricted access to its DOM.`,
           points: 0,
         },
       ],
@@ -358,7 +362,7 @@ function renderResults(data) {
     <div class="check-item">
       <div class="check-header">
         <span class="check-name">${r.name}</span>
-        <span class="check-status ${r.status}">${r.status === "pass" ? "✓ Pass" : r.status === "warn" ? "⚠ Warn" : "✗ Fail"}</span>
+        <span class="check-status ${r.status}">${r.status === "pass" ? "\u2713 Pass" : r.status === "warn" ? "\u26a0 Warn" : "\u2717 Fail"}</span>
       </div>
       <div class="check-detail">${r.detail}</div>
     </div>`
