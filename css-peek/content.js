@@ -100,7 +100,8 @@
     navigator.clipboard.writeText(sel).catch(function () {});
     if (tooltip) {
       tooltip.innerHTML = '<div class="cp-section" style="text-align:center;padding:12px">Copied!<br><span style="font-size:11px;color:#9aa0a6">' + sel + '</span></div>';
-      setTimeout(function () { tooltip.style.display = "none"; }, 1500);
+      var t = tooltip;
+      setTimeout(function () { t.style.display = "none"; }, 1500);
     }
   }
 
