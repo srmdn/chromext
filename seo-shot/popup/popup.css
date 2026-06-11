@@ -46,6 +46,10 @@ body {
   margin-top: 6px;
 }
 
+.error .rescan-btn {
+  margin-top: 14px;
+}
+
 .score-section {
   text-align: center;
   padding: 8px 0 12px;

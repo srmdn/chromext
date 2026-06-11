@@ -5,12 +5,18 @@ const scoreValue = document.getElementById("scoreValue");
 const scoreCircle = document.getElementById("scoreCircle");
 const pageUrl = document.getElementById("pageUrl");
 const checks = document.getElementById("checks");
+const retryBtn = document.getElementById("retryBtn");
 
 let scanTimeout = null;
 
 scanPage();
 
 document.getElementById("rescanBtn").addEventListener("click", () => {
+  clearTimeout(scanTimeout);
+  scanPage();
+});
+
+retryBtn.addEventListener("click", () => {
   clearTimeout(scanTimeout);
   scanPage();
 });
@@ -92,6 +98,42 @@ function runScanner() {
     return String(str).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
   }
 
+  function normalizeComparableUrl(url) {
+    try {
+      const parsed = new URL(url, doc.location.href);
+      const pathname = parsed.pathname.replace(/\/+$/, "") || "/";
+      return `${parsed.origin}${pathname}`;
+    } catch (_) {
+      return "";
+    }
+  }
+
+  function extractJsonLdTypes(value) {
+    if (Array.isArray(value)) {
+      return value.flatMap(extractJsonLdTypes);
+    }
+    if (!value || typeof value !== "object") {
+      return [];
+    }
+
+    const types = [];
+    if (value["@type"]) {
+      if (Array.isArray(value["@type"])) {
+        types.push(...value["@type"]);
+      } else {
+        types.push(value["@type"]);
+      }
+    } else if (value["@graph"]) {
+      types.push("Graph");
+    }
+
+    if (Array.isArray(value["@graph"])) {
+      types.push(...value["@graph"].flatMap(extractJsonLdTypes));
+    }
+
+    return types;
+  }
+
   try {
     const title = doc.querySelector("title");
     const titleText = title?.textContent?.trim() || "";
@@ -100,19 +142,31 @@ function runScanner() {
     if (!titleText) {
       fail("Title tag", "Missing. Every page needs a <code>&lt;title&gt;</code> tag.", 0);
     } else if (titleLen < 30) {
+      fail(
+        "Title tag",
+        `Too short (${titleLen} chars). Aim for 50–60. Current: "${esc(titleText)}"`,
+        0
+      );
+    } else if (titleLen < 50) {
       warn(
         "Title tag",
         `Too short (${titleLen} chars). Aim for 50–60. Current: "${esc(titleText)}"`,
-        5
+        6
+      );
+    } else if (titleLen <= 60) {
+      pass("Title tag", `${titleLen} chars — good length. "${esc(titleText)}"`, 10);
+    } else if (titleLen <= 70) {
+      warn(
+        "Title tag",
+        `Slightly long (${titleLen} chars). Aim for 50–60. Current: "${esc(titleText.substring(0, 60))}\u2026"`,
+        7
       );
     } else if (titleLen > 70) {
       warn(
         "Title tag",
         `Too long (${titleLen} chars). Aim for 50–60. Current: "${esc(titleText.substring(0, 60))}\u2026"`,
-        5
+        4
       );
-    } else {
-      pass("Title tag", `${titleLen} chars — good length. "${esc(titleText)}"`, 10);
     }
 
     const metaDesc = doc.querySelector('meta[name="description"]');
@@ -125,12 +179,14 @@ function runScanner() {
         "Missing. Add a <code>&lt;meta name=\"description\"&gt;</code> tag.",
         5
       );
-    } else if (descLen < 50) {
-      warn("Meta description", `Too short (${descLen} chars). Aim for 120–160.`, 5);
-    } else if (descLen > 160) {
-      warn("Meta description", `Too long (${descLen} chars). Aim for 120–160.`, 8);
-    } else {
+    } else if (descLen < 70) {
+      warn("Meta description", `Too short (${descLen} chars). Aim for 120–160.`, 3);
+    } else if (descLen < 120) {
+      warn("Meta description", `Short (${descLen} chars). Aim for 120–160.`, 7);
+    } else if (descLen <= 160) {
       pass("Meta description", `${descLen} chars — good length.`, 10);
+    } else if (descLen > 160) {
+      warn("Meta description", `Too long (${descLen} chars). Aim for 120–160.`, 6);
     }
 
     const h1s = doc.querySelectorAll("h1");
@@ -150,26 +206,46 @@ function runScanner() {
       );
     }
 
-    const h2s = doc.querySelectorAll("h2");
-    const h3s = doc.querySelectorAll("h3");
-    if (h1s.length > 0 && h2s.length === 0) {
-      warn("Heading hierarchy", "No H2s found after H1. Use H2s for sections.", 3);
-    } else if (h3s.length > 0 && h2s.length === 0) {
-      fail("Heading hierarchy", "H3s found without H2s. Don't skip heading levels.", 0);
-    } else if (h2s.length > 0) {
-      pass(
-        "Heading hierarchy",
-        `${h2s.length} H2(s), ${h3s.length} H3(s) — looks structured.`,
-        10
-      );
-    } else if (h1s.length === 0) {
+    const headings = Array.from(doc.querySelectorAll("h1, h2, h3, h4, h5, h6")).map((el) => ({
+      level: Number(el.tagName.substring(1)),
+      text: el.textContent.trim(),
+    }));
+    const h2s = headings.filter((h) => h.level === 2);
+    const firstHeading = headings[0];
+    const skippedLevel = headings.find((heading, index) => {
+      if (index === 0) return false;
+      const previousLevel = headings[index - 1].level;
+      return heading.level > previousLevel + 1;
+    });
+
+    if (headings.length === 0) {
       warn("Heading hierarchy", "No headings found at all.", 3);
+    } else if (h1s.length === 0) {
+      fail(
+        "Heading hierarchy",
+        "No <code>&lt;h1&gt;</code> found in the page heading sequence.",
+        0
+      );
+    } else if (firstHeading.level !== 1) {
+      fail(
+        "Heading hierarchy",
+        `First heading is <code>&lt;h${firstHeading.level}&gt;</code>. Start with an <code>&lt;h1&gt;</code>.`,
+        0
+      );
+    } else if (skippedLevel) {
+      fail(
+        "Heading hierarchy",
+        `Skipped heading level before "${esc(skippedLevel.text.substring(0, 50) || `H${skippedLevel.level}`)}". Don't jump from H${headings[headings.indexOf(skippedLevel) - 1].level} to H${skippedLevel.level}.`,
+        0
+      );
+    } else if (h1s.length > 0 && h2s.length === 0) {
+      warn("Heading hierarchy", "No H2s found after H1. Use H2s for sections.", 3);
     } else {
       pass("Heading hierarchy", "H1 present, no skipped levels detected.", 10);
     }
 
     const images = doc.querySelectorAll("img");
-    const missingAlt = Array.from(images).filter((img) => !img.getAttribute("alt"));
+    const missingAlt = Array.from(images).filter((img) => img.getAttribute("alt") === null);
     const altPercent =
       images.length > 0
         ? Math.round(((images.length - missingAlt.length) / images.length) * 100)
@@ -244,6 +320,8 @@ function runScanner() {
 
     const canonical = doc.querySelector('link[rel="canonical"]');
     const canonicalHref = canonical?.getAttribute("href") || "";
+    const canonicalComparable = normalizeComparableUrl(canonicalHref);
+    const currentComparable = normalizeComparableUrl(doc.location.href);
 
     if (!canonicalHref) {
       warn(
@@ -251,23 +329,41 @@ function runScanner() {
         "Missing. Add <code>&lt;link rel=\"canonical\"&gt;</code> to avoid duplicate content.",
         5
       );
-    } else {
+    } else if (canonicalComparable && currentComparable && canonicalComparable === currentComparable) {
       pass(
         "Canonical URL",
-        `Present: <code>${esc(canonicalHref.substring(0, 50))}</code>`,
+        `Self-referencing canonical present: <code>${esc(canonicalHref.substring(0, 50))}</code>`,
         10
+      );
+    } else {
+      warn(
+        "Canonical URL",
+        `Canonical points to a different URL: <code>${esc(canonicalHref.substring(0, 70))}</code>`,
+        6
       );
     }
 
     const robots = doc.querySelector('meta[name="robots"]');
-    const robotsContent = robots?.getAttribute("content") || "";
+    const robotsContent = (robots?.getAttribute("content") || "").toLowerCase();
     if (!robotsContent) {
       pass("Robots meta", "No robots meta tag — defaults to index, follow.", 10);
+    } else if (robotsContent.includes("noindex") && robotsContent.includes("nofollow")) {
+      warn(
+        "Robots meta",
+        "Page is set to <code>noindex, nofollow</code>. Search engines won't index or follow this page.",
+        3
+      );
     } else if (robotsContent.includes("noindex")) {
       warn(
         "Robots meta",
         "Page is set to <code>noindex</code>. Search engines won't index it.",
         5
+      );
+    } else if (robotsContent.includes("nofollow")) {
+      warn(
+        "Robots meta",
+        "Page is set to <code>nofollow</code>. Search engines may not follow links on this page.",
+        7
       );
     } else {
       pass("Robots meta", `Set to: <code>${esc(robotsContent)}</code>`, 10);
@@ -281,18 +377,38 @@ function runScanner() {
         4
       );
     } else {
-      let types = [];
-      try {
-        types = Array.from(jsonLd)
-          .map((el) => JSON.parse(el.textContent))
-          .filter(Boolean)
-          .map((d) => d["@type"] || (d["@graph"] ? "Graph" : "Unknown"));
-      } catch (_) {}
-      pass(
-        "Structured data",
-        `${jsonLd.length} JSON-LD block(s) found${types.length ? ": " + types.slice(0, 3).map(esc).join(", ") : ""}.`,
-        10
-      );
+      const parsedBlocks = [];
+      let invalidCount = 0;
+
+      Array.from(jsonLd).forEach((el) => {
+        try {
+          parsedBlocks.push(JSON.parse(el.textContent));
+        } catch (_) {
+          invalidCount += 1;
+        }
+      });
+
+      const types = parsedBlocks.flatMap(extractJsonLdTypes).filter(Boolean);
+
+      if (parsedBlocks.length === 0) {
+        warn(
+          "Structured data",
+          `${invalidCount}/${jsonLd.length} JSON-LD block(s) are invalid JSON.`,
+          2
+        );
+      } else if (invalidCount > 0) {
+        warn(
+          "Structured data",
+          `${parsedBlocks.length}/${jsonLd.length} JSON-LD block(s) parsed successfully${types.length ? ": " + types.slice(0, 3).map(esc).join(", ") : ""}. ${invalidCount} block(s) are invalid JSON.`,
+          6
+        );
+      } else {
+        pass(
+          "Structured data",
+          `${jsonLd.length} JSON-LD block(s) found${types.length ? ": " + types.slice(0, 3).map(esc).join(", ") : ""}.`,
+          10
+        );
+      }
     }
 
     const viewport = doc.querySelector('meta[name="viewport"]');

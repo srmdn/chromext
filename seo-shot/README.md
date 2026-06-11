@@ -9,11 +9,11 @@ Instant on-page SEO snapshot. Score out of 100 with actionable fixes. No API nee
 | Title tag | Presence, length (50–60 optimal), content |
 | Meta description | Presence, length (120–160 optimal) |
 | H1 heading | Count (should be exactly 1) |
-| Heading hierarchy | H1→H2→H3 order, no skipped levels |
-| Image alt text | % of images with alt attributes |
+| Heading hierarchy | Starts with H1, no skipped levels (H1→H2→H3...) |
+| Image alt text | % of images with an `alt` attribute |
 | Open Graph tags | og:title, og:description, og:image, og:url |
 | Twitter Card | card, title, description, image |
-| Canonical URL | Presence, self-referencing |
+| Canonical URL | Presence, whether it self-references current path |
 | Robots meta | index/noindex, follow/nofollow |
 | Structured data | JSON-LD blocks and types |
 | Mobile viewport | width=device-width |
@@ -40,5 +40,7 @@ Chrome → chrome://extensions → Developer mode → Load unpacked → select t
 
 - `activeTab` — scan the current page when you click the icon
 - `scripting` — run the DOM scanner
+
+No broad host permissions. SEO Shot only scans the active page after a user click.
 
 **Zero external network calls. Zero data collection. No storage.**
