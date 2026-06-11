@@ -1,5 +1,26 @@
 let protectionEnabled = true;
 let actionMode = "warn";
+const COMPOSER_INCLUDE_HINTS = [
+  "prompt",
+  "composer",
+  "message",
+  "chat",
+  "assistant",
+  "ask",
+  "input",
+  "textbox",
+  "reply",
+  "question",
+];
+const COMPOSER_EXCLUDE_HINTS = [
+  "search",
+  "filter",
+  "find",
+  "topic",
+  "subject",
+  "title",
+  "rename",
+];
 
 try {
   chrome.storage.sync.get({ enabled: true, action: "warn" }, (data) => {
@@ -44,7 +65,7 @@ function detachListeners() {
 function handlePaste(event) {
   try {
     const target = event.target;
-    if (!isEditable(target)) return;
+    if (!isEditable(target) || !looksLikeChatComposer(target)) return;
 
     const clipboardData = event.clipboardData;
     if (!clipboardData) return;
@@ -54,16 +75,17 @@ function handlePaste(event) {
 
     const findings = scanText(text);
     if (findings.length === 0) return;
+    const targetState = captureTargetState(target);
 
     event.preventDefault();
     event.stopPropagation();
 
     if (actionMode === "block") {
-      showBlockedOverlay(target, findings);
+      showBlockedOverlay(findings);
       return;
     }
 
-    showWarningOverlay(target, text, findings);
+    showWarningOverlay(target, targetState, text, findings);
   } catch (_) {}
 }
 
@@ -130,7 +152,7 @@ function maskText(text, findings) {
   return masked;
 }
 
-function showWarningOverlay(target, originalText, findings) {
+function showWarningOverlay(target, targetState, originalText, findings) {
   removeExistingOverlay();
 
   const overlay = document.createElement("div");
@@ -161,13 +183,13 @@ function showWarningOverlay(target, originalText, findings) {
 
   overlay.querySelector("#pg-mask").addEventListener("click", () => {
     removeExistingOverlay();
-    pasteInto(target, maskText(originalText, findings));
+    pasteInto(target, maskText(originalText, findings), targetState);
     incrementCaught(findings.length);
   });
 
   overlay.querySelector("#pg-raw").addEventListener("click", () => {
     removeExistingOverlay();
-    pasteInto(target, originalText);
+    pasteInto(target, originalText, targetState);
   });
 
   overlay.querySelector("#pg-cancel").addEventListener("click", () => {
@@ -181,7 +203,7 @@ function showWarningOverlay(target, originalText, findings) {
   document.addEventListener("keydown", handleEscape);
 }
 
-function showBlockedOverlay(target, findings) {
+function showBlockedOverlay(findings) {
   removeExistingOverlay();
 
   const overlay = document.createElement("div");
@@ -231,14 +253,40 @@ function removeExistingOverlay() {
   document.removeEventListener("keydown", handleEscape);
 }
 
-function pasteInto(target, text) {
+function pasteInto(target, text, targetState) {
   target.focus();
-  const start = target.selectionStart ?? target.value?.length ?? 0;
-  const end = target.selectionEnd ?? start;
 
-  if (target.isContentEditable || target.getAttribute("contenteditable") === "true") {
-    document.execCommand("insertText", false, text);
-  } else if (target.value !== undefined) {
+  if (isRichTextEditable(target)) {
+    if (!restoreSelection(target, targetState)) return;
+
+    let inserted = false;
+    try {
+      inserted = document.execCommand("insertText", false, text);
+    } catch (_) {}
+
+    if (!inserted) {
+      const selection = window.getSelection();
+      if (!selection || selection.rangeCount === 0) return;
+      const range = selection.getRangeAt(0);
+      range.deleteContents();
+      const textNode = document.createTextNode(text);
+      range.insertNode(textNode);
+      range.setStartAfter(textNode);
+      range.collapse(true);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    }
+
+    target.dispatchEvent(new Event("input", { bubbles: true }));
+    return;
+  }
+
+  if (target.value !== undefined) {
+    const start = targetState?.selectionStart ?? target.selectionStart ?? target.value.length ?? 0;
+    const end = targetState?.selectionEnd ?? target.selectionEnd ?? start;
+    try {
+      target.setSelectionRange(start, end);
+    } catch (_) {}
     target.setRangeText(text, start, end, "end");
     target.dispatchEvent(new Event("input", { bubbles: true }));
   }
@@ -247,7 +295,120 @@ function pasteInto(target, text) {
 function isEditable(element) {
   if (!element) return false;
   const tag = element.tagName?.toLowerCase();
-  if (tag === "textarea" || tag === "input") return true;
+  if (tag === "textarea") return true;
+  if (tag === "input") {
+    const type = (element.getAttribute("type") || "text").toLowerCase();
+    return ["", "text", "search", "url"].includes(type);
+  }
+  if (isRichTextEditable(element)) return true;
+  return false;
+}
+
+function looksLikeChatComposer(element) {
+  const context = collectElementContext(element);
+  const hasIncludeHint = COMPOSER_INCLUDE_HINTS.some((hint) => context.includes(hint));
+  const hasExcludeHint = COMPOSER_EXCLUDE_HINTS.some((hint) => context.includes(hint));
+  const rect = typeof element.getBoundingClientRect === "function" ? element.getBoundingClientRect() : null;
+  const isLargeField = !!rect && rect.width >= 220 && rect.height >= 36;
+  const hasNearbySendButton = hasComposerActionNearby(element);
+  const tag = element.tagName?.toLowerCase();
+
+  if (tag === "input") {
+    if (hasExcludeHint && !hasIncludeHint) return false;
+    return hasIncludeHint || hasNearbySendButton;
+  }
+
+  if (isRichTextEditable(element)) {
+    return hasIncludeHint || hasNearbySendButton || isLargeField;
+  }
+
+  return hasIncludeHint || hasNearbySendButton || isLargeField;
+}
+
+function collectElementContext(element) {
+  const parts = [];
+  let current = element;
+  let depth = 0;
+
+  while (current && depth < 4) {
+    parts.push(
+      current.getAttribute?.("aria-label") || "",
+      current.getAttribute?.("placeholder") || "",
+      current.getAttribute?.("data-testid") || "",
+      current.getAttribute?.("name") || "",
+      current.getAttribute?.("role") || "",
+      current.id || "",
+      typeof current.className === "string" ? current.className : ""
+    );
+    current = current.parentElement;
+    depth += 1;
+  }
+
+  return parts.join(" ").toLowerCase();
+}
+
+function hasComposerActionNearby(element) {
+  const root =
+    element.closest("form") ||
+    element.closest("main") ||
+    element.closest('[role="main"]') ||
+    element.parentElement;
+
+  if (!root || typeof root.querySelectorAll !== "function") return false;
+
+  const actionHints = ["send", "submit", "chat", "message", "prompt", "ask", "reply"];
+  const buttons = root.querySelectorAll("button, [role='button']");
+
+  return Array.from(buttons).some((button) => {
+    const text = [
+      button.textContent || "",
+      button.getAttribute("aria-label") || "",
+      button.getAttribute("title") || "",
+      button.getAttribute("data-testid") || "",
+      button.className || "",
+    ]
+      .join(" ")
+      .toLowerCase();
+
+    return actionHints.some((hint) => text.includes(hint));
+  });
+}
+
+function captureTargetState(target) {
+  if (!target) return null;
+
+  if (isRichTextEditable(target)) {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return null;
+
+    const range = selection.getRangeAt(0);
+    if (!target.contains(range.commonAncestorContainer)) return null;
+
+    return { range: range.cloneRange() };
+  }
+
+  return {
+    selectionStart: target.selectionStart ?? target.value?.length ?? 0,
+    selectionEnd: target.selectionEnd ?? target.selectionStart ?? 0,
+  };
+}
+
+function restoreSelection(target, targetState) {
+  if (!targetState?.range) return false;
+
+  const selection = window.getSelection();
+  if (!selection) return false;
+
+  const range = targetState.range.cloneRange();
+  if (!target.contains(range.commonAncestorContainer)) return false;
+
+  selection.removeAllRanges();
+  selection.addRange(range);
+  return true;
+}
+
+function isRichTextEditable(element) {
+  if (!element) return false;
   if (element.isContentEditable) return true;
   if (element.getAttribute("contenteditable") === "true") return true;
   if (element.getAttribute("role") === "textbox") return true;

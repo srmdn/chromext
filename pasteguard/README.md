@@ -4,7 +4,7 @@ Stop pasting API keys and secrets into AI chats.
 
 ## What it does
 
-Scans your clipboard when you paste into AI chat interfaces (ChatGPT, Claude, Gemini, etc.). If secrets are detected, it shows a warning and lets you mask them before the paste goes through — or blocks the paste entirely.
+Scans pasted text locally when you paste into supported AI chat interfaces in Chrome. If secrets are detected, it shows a warning and lets you mask them before the paste goes through — or blocks the paste entirely.
 
 ## Protected sites
 
@@ -27,6 +27,10 @@ OpenAI keys, Anthropic keys, GitHub tokens, Stripe live keys, AWS access keys, G
 - **Block completely** — blocks the paste, shows what was caught
 - **Off** — disable via popup
 
+## How it works
+
+PasteGuard runs only on the supported AI sites listed below. It inspects pasted text locally in your browser when you paste into a chat-style composer field on those sites. It does not send pasted text anywhere.
+
 ## Install
 
 ```
@@ -36,7 +40,6 @@ Chrome → chrome://extensions → Developer mode → Load unpacked → select t
 ## Permissions
 
 - `storage` — save your preferences (warn/block mode)
-- `scripting` + `activeTab` — intercept paste events on AI sites
-- Host permissions — only on AI chat domains
+- Host access on listed AI chat domains — intercept paste events in supported web chat interfaces
 
 **Zero external network calls. Zero data collection.**
