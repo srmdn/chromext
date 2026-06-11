@@ -36,7 +36,6 @@ chromext/
 │   ├── manifest.json
 │   ├── content.js             # Hover inspector + tooltip
 │   ├── content.css            # Tooltip styling
-│   ├── background.js          # Service worker
 │   ├── popup/                 # Toggle on/off
 │   └── icons/
 ├── seo-shot/                  # Each extension is self-contained

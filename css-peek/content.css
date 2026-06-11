@@ -23,6 +23,63 @@
   border-bottom: 1px solid #3c4043;
 }
 
+.cp-selector-block {
+  margin-bottom: 8px;
+  padding: 7px 8px;
+  background: #242528;
+  border-radius: 6px;
+}
+
+.cp-selector-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+
+.cp-selector-label {
+  font-size: 9px;
+  color: #9aa0a6;
+  text-transform: uppercase;
+}
+
+.cp-quality {
+  font-size: 9px;
+  font-weight: 600;
+  padding: 1px 6px;
+  border-radius: 999px;
+}
+
+.cp-quality-stable {
+  color: #34a853;
+  background: rgba(52, 168, 83, 0.14);
+}
+
+.cp-quality-decent {
+  color: #fbbc04;
+  background: rgba(251, 188, 4, 0.14);
+}
+
+.cp-quality-fragile {
+  color: #ea4335;
+  background: rgba(234, 67, 53, 0.14);
+}
+
+.cp-selector-code {
+  display: block;
+  color: #e8eaed;
+  font-size: 10px;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.cp-selector-reason {
+  margin-top: 4px;
+  font-size: 9px;
+  color: #6e7681;
+}
+
 .cp-breadcrumb {
   display: block;
   color: #6e7681;

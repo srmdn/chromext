@@ -4,6 +4,8 @@
   var btn = document.getElementById("toggleBtn");
   var label = document.getElementById("toggleLabel");
   var running = false;
+  var tabId = null;
+  var scriptReady = false;
 
   function setState(state) {
     running = state;
@@ -16,6 +18,10 @@
     }
   }
 
+  function sendTabMessage(message) {
+    return chrome.tabs.sendMessage(tabId, message);
+  }
+
   function injectContent(tabId) {
     chrome.scripting.executeScript({
       target: { tabId: tabId },
@@ -25,6 +31,9 @@
         target: { tabId: tabId },
         files: ["content.css"],
       }).catch(function () {});
+      scriptReady = true;
+      return sendTabMessage({ text: "start" });
+    }).then(function () {
       setState(true);
     }).catch(function (err) {
       if (err.message && err.message.includes("chrome")) {
@@ -38,19 +47,30 @@
   chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
     var tab = tabs[0];
     if (!tab?.id) return;
+    tabId = tab.id;
 
     chrome.tabs.sendMessage(tab.id, { text: "ping" }, function (response) {
-      if (!chrome.runtime.lastError && response === "pong") {
-        setState(true);
+      if (!chrome.runtime.lastError && response?.installed) {
+        scriptReady = true;
+        setState(!!response.active);
       }
     });
 
     btn.addEventListener("click", function () {
       if (running) {
-        chrome.tabs.sendMessage(tab.id, { text: "destroy" }).catch(function () {});
+        sendTabMessage({ text: "destroy" }).catch(function () {
+          scriptReady = false;
+        });
         setState(false);
+      } else if (scriptReady) {
+        sendTabMessage({ text: "start" }).then(function () {
+          setState(true);
+        }).catch(function () {
+          scriptReady = false;
+          injectContent(tabId);
+        });
       } else {
-        injectContent(tab.id);
+        injectContent(tabId);
       }
     });
   });

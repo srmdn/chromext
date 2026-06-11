@@ -39,14 +39,13 @@ Each extension requests only the minimum permissions needed:
 
 <div class="ext-card" style="margin-bottom: 16px">
   <strong>CSS Peek</strong>
-  <p><code>activeTab</code> + <code>scripting</code> — inject inspector into the current tab on demand<br>
-  <code>storage</code> — reserved for future preferences</p>
+  <p><code>activeTab</code> + <code>scripting</code> — inject inspector into the current tab on demand</p>
 </div>
 
 <div class="ext-card" style="margin-bottom: 16px">
   <strong>PasteGuard</strong>
   <p><code>storage</code> — save your warn/block preference<br>
-  <code>scripting</code> + <code>activeTab</code> — intercept paste events on AI chat sites</p>
+  Host access on supported AI chat domains — inspect pasted text locally in supported web chat interfaces</p>
 </div>
 
 <div class="ext-card" style="margin-bottom: 16px">
