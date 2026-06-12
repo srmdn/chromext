@@ -38,7 +38,7 @@ features:
 
 <div class="ext-card">
   <h3>🛡️ PasteGuard</h3>
-  <p>Stop pasting API keys and secrets into AI chats. Scans pasted text locally when you paste into ChatGPT, Claude, Gemini, and other supported AI sites. Warns, masks, or blocks before you leak credentials.</p>
+  <p>Stop pasting API keys and secrets into AI chats. Scans pasted text locally on supported web-based AI chat interfaces. Warns, masks, or blocks before you leak credentials.</p>
   <p><strong>15 detection patterns</strong> — OpenAI, Anthropic, GitHub, Stripe, AWS keys, JWTs, private keys, database URLs, .env assignments.</p>
   <div class="ext-perms">
     <span class="perm-badge">storage</span>

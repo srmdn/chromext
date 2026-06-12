@@ -6,11 +6,11 @@ Stop pasting API keys and secrets into AI chats.
 
 ## What it does
 
-Scans pasted text locally when you paste into supported AI chat interfaces in Chrome. If secrets are detected, it shows a warning and lets you mask them before the paste goes through — or blocks the paste entirely.
+Scans pasted text locally when you paste into supported web-based AI chat interfaces in Chrome. If secrets are detected, it shows a warning and lets you mask them before the paste goes through — or blocks the paste entirely.
 
-## Protected sites
+## Supported sites
 
-ChatGPT, Claude, Gemini, Copilot, DeepSeek, Perplexity, Poe, You.com, Mistral, HuggingFace Chat, Groq, Grok, xAI, Cursor, v0, Bolt
+PasteGuard works on supported web-based AI chat interfaces.
 
 ## Detected secrets
 
