@@ -58,14 +58,13 @@ features:
 </div>
 
 <div class="ext-card">
-  <h3>🌙 Dark Theme for Google Translate</h3>
-  <p>Calm, very-dark theme for Google Translate. Toggle with one click in the page header. 8 accent colors to choose from.</p>
-  <p><strong>400+ exact DOM selectors</strong> — every Google Translate UI element is themed. No flash, injected before page render.</p>
+  <h3>🌙 Midnight Translate</h3>
+  <p>Soft midnight mode for Google Translate with a floating page toggle and accent color controls.</p>
+  <p><strong>Local-only theme state</strong> — no remote code, no background worker, no broad site access beyond supported Translate pages.</p>
   <div class="ext-perms">
     <span class="perm-badge">storage</span>
-    <span class="perm-badge">scripting</span>
   </div>
-  <p style="margin-top: 12px"><a href="https://github.com/srmdn/chromext/tree/master/google-translate-dark">Source →</a></p>
+  <p style="margin-top: 12px"><a href="https://github.com/srmdn/chromext/tree/master/midnight-translate">Source →</a></p>
 </div>
 
 ## Philosophy

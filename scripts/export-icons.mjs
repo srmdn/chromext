@@ -11,7 +11,7 @@ const CHROME_CANDIDATES = [
   '/Applications/Chromium.app/Contents/MacOS/Chromium',
 ];
 
-const PACKAGES = ['seo-shot', 'pasteguard', 'google-translate-dark', 'css-peek'];
+const PACKAGES = ['seo-shot', 'pasteguard', 'midnight-translate', 'css-peek'];
 const SIZES = [16, 32, 48, 128];
 
 function findChrome() {

@@ -1,0 +1,583 @@
+:root {
+  color-scheme: dark;
+  --mt-accent: #7cc0ff;
+  --mt-bg: #0f141a;
+  --mt-surface: #161d26;
+  --mt-surface-2: #1b2430;
+  --mt-surface-3: #222d3a;
+  --mt-text: #e7edf5;
+  --mt-muted: #9aa8ba;
+  --mt-border: rgba(166, 183, 204, 0.18);
+  --mt-soft-border: rgba(166, 183, 204, 0.1);
+  --mt-accent-soft: color-mix(in srgb, var(--mt-accent) 18%, transparent);
+  --mt-accent-glow: color-mix(in srgb, var(--mt-accent) 32%, transparent);
+}
+
+html,
+body,
+c-wiz,
+.pGxpHc,
+.pGxpHc header,
+.RvYhPd,
+.ccvoYb,
+.P6w8m,
+.I87fLc,
+.jTj8gd,
+.a2Icud,
+.vPHZid,
+.kmXzdf,
+.eSogib,
+.DNFg3e,
+.AzKM4,
+.DLAnyc,
+.qt6jm,
+.CMhTbb,
+.EHzcec,
+.GKdr2,
+.Bcbxbe,
+.NBY4Kb,
+.QcsUad,
+.MOkH4e,
+.GAyS9e {
+  background: var(--mt-bg) !important;
+  color: var(--mt-text) !important;
+}
+
+.RvYhPd::before,
+.P6w8m.BDJ8fb:not(.Jj6Lae),
+.ySES5,
+.KjuTac,
+.fMHXgc,
+.yFQBKb,
+.PG9puc,
+.Usd1Ac,
+.zLmSvf,
+.MmZJl,
+.gb_Dc,
+.CLKKk4c,
+.ydsGXd,
+.VfPpkd-xl07Ob-XxIAqe,
+.QcsUad:not(.sMVRZe):not(.VfPpkd-ksKsZd-mWPk3d)::after {
+  background: var(--mt-surface) !important;
+}
+
+.qSb8Pe,
+.qSb8Pe:hover,
+.Bcbxbe.FwR7Pc,
+.k5v5Nb,
+.zWtKC,
+.JLqJ4b:hover,
+.JLqJ4b.C1N51c,
+.oJweqc:hover,
+.oJweqc.KKjvXb,
+.kgnlhe.FwR7Pc,
+.MtFg0.FwR7Pc {
+  background: var(--mt-surface-2) !important;
+}
+
+input,
+textarea,
+.QcsUad,
+.QcsUad .er8xn,
+.QcsUad .a9T9hc,
+.cfWmIb,
+.cfWmIb .VfPpkd-fmcmS-wGMbrd,
+.Rj2Mlf,
+.Rj2Mlf:not(:disabled),
+.lRu31,
+.J0lOec {
+  background: var(--mt-surface-3) !important;
+  color: var(--mt-text) !important;
+  border-color: var(--mt-border) !important;
+}
+
+body,
+input,
+textarea,
+button,
+.TcXXXb,
+.J0lOec,
+.aia4Ud,
+.uNr6ee,
+.S6GkK,
+.qSb8Pe,
+.v2OCrb,
+.EYBmYc,
+.XMNbjd,
+.AP34ab,
+.kgJkHd,
+.UHM95,
+.CJYaL,
+.EXtLjf,
+.T6JUYe,
+.MYwhef,
+.qO3kpb,
+.f5heid,
+.iflf6,
+.NqnNQd,
+.fcuAz,
+.pWIpbc,
+.Jp7KKb,
+.xGNEbb,
+.PrVWEc,
+.cfWmIb .VfPpkd-NLUYnc-V67aGc,
+.VfPpkd-V67aGc {
+  color: var(--mt-text) !important;
+}
+
+.MZgjEb,
+.xUPQqb,
+.UdTY9,
+.gYMFrf,
+.MOkH4e .VfPpkd-kBDsod {
+  color: var(--mt-muted) !important;
+}
+
+.er8xn,
+.ita-kd-icon-button,
+.yHy1rc:disabled,
+.brilXb,
+.nYkDR,
+.PsfnLc,
+.nIvUSc,
+.LjDxcd:not(:disabled),
+.pwKYW {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+}
+
+a,
+.ODAbH,
+.eIKIse,
+.jodjCb,
+.mvqA2c,
+.dgYHDb .VfPpkd-StrnGf-rymPhb-f7MjDc,
+.kihvAe,
+.zpaZf,
+.NBY4Kb,
+.a8FIud.X0rvP .X86VN[aria-pressed="true"] {
+  color: var(--mt-accent) !important;
+}
+
+.ksE5nf.EiZ8Dd,
+.y9jKHb,
+.Pk9dvb:not(:disabled),
+.CQQi5b,
+.VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc::before,
+.VfPpkd-LgbsSe-OWXEXe-INsAgc .VfPpkd-Jh9lGc::after,
+.Rj2Mlf .VfPpkd-Jh9lGc::before,
+.Rj2Mlf .VfPpkd-Jh9lGc::after,
+.yUUmWd.VfPpkd-AznF2e-OWXEXe-auswjd .VfPpkd-YVzG2b::before,
+.yUUmWd.VfPpkd-AznF2e-OWXEXe-auswjd .VfPpkd-YVzG2b::after {
+  background: var(--mt-accent) !important;
+}
+
+.VfPpkd-LgbsSe:hover,
+.VfPpkd-Jh9lGc:hover,
+.kwsPce:not(:disabled),
+.ksBjEc:not(:disabled),
+.BSw7K.iYelWb .irkilc:not(:disabled),
+.BSw7K.MFKVse .hL2wFc:not(:disabled),
+.BSw7K.H4CMrb .aiUxpf:not(:disabled),
+.BSw7K.Vkm6Re .NMQgkb:not(:disabled) {
+  background: var(--mt-accent-soft) !important;
+}
+
+.Rj2Mlf:not(:disabled),
+.ksBjEc .VfPpkd-Jh9lGc::before,
+.ksBjEc .VfPpkd-Jh9lGc::after,
+.lSo1Re .co39ub,
+.lSo1Re .Cn087,
+.lSo1Re .hfsr6b,
+.lSo1Re .EjXFBf,
+.cfWmIb .VfPpkd-NSFCdd-MpmGFe {
+  border-color: var(--mt-accent) !important;
+}
+
+.cfWmIb .VfPpkd-fmcmS-wGMbrd {
+  caret-color: var(--mt-accent) !important;
+}
+
+.DU29of .VfPpkd-JGcpL-uI4vCe-LkdAo,
+.DU29of .VfPpkd-JGcpL-IdXvz-LkdAo-Bd00G,
+.INImOe {
+  stroke: var(--mt-accent) !important;
+  fill: var(--mt-text) !important;
+}
+
+.pGxpHc header,
+.RvYhPd,
+.Bcbxbe,
+.P6w8m,
+.QcsUad,
+.Rj2Mlf,
+.GR2kEe:not(:last-child),
+.iWzU,
+.iWzUVd,
+.dQBt {
+  border-color: var(--mt-soft-border) !important;
+}
+
+.X4DQ0::after {
+  background-image: linear-gradient(to right, transparent, var(--mt-bg)) !important;
+}
+
+.Ft4sJe:not(:disabled),
+.MxWhHf:not(:disabled),
+.GyPTPe:not(:disabled),
+.X2ZoU:not(:disabled) {
+  border-color: var(--mt-border) !important;
+}
+
+.Ft4sJe.Ft4sJe:hover,
+.MxWhHf.MxWhHf:hover,
+.GyPTPe.GyPTPe:hover,
+.X2ZoU.X2ZoU:hover {
+  box-shadow: 0 0 0 3px var(--mt-accent-glow) !important;
+}
+
+.hgbeOc {
+  position: static !important;
+}
+
+/* Fallback coverage for still-bright text, panels, buttons, and icons */
+.pGxpHc header a,
+.pGxpHc header span,
+.pGxpHc header div,
+.pGxpHc [role="heading"],
+h1,
+h2,
+h3 {
+  color: var(--mt-text) !important;
+}
+
+button,
+[role="button"],
+.VfPpkd-Bz112c-LgbsSe,
+.VfPpkd-LgbsSe,
+.VfPpkd-ksKsZd-mWPk3d,
+.VfPpkd-fmcmS,
+.Rj2Mlf,
+.QcsUad {
+  border-color: var(--mt-border) !important;
+}
+
+button:not(#mt-floating-toggle),
+[role="button"]:not(#mt-floating-toggle) {
+  color: var(--mt-text) !important;
+}
+
+.QcsUad,
+.cfWmIb,
+.Rj2Mlf,
+.RvYhPd,
+.P6w8m,
+.MOkH4e,
+.GAyS9e,
+.fMHXgc,
+.KjuTac {
+  box-shadow: none !important;
+}
+
+.ita-kd-icon-button,
+.ita-kd-icon-button *,
+.VfPpkd-Bz112c-LgbsSe *,
+.VfPpkd-LgbsSe *,
+[aria-label*="History" i],
+[aria-label*="Saved" i],
+[aria-label*="Copy" i],
+[aria-label*="Search" i],
+[aria-label*="keyboard" i],
+[aria-label*="input" i] {
+  color: inherit !important;
+}
+
+.ita-kd-icon-button,
+[aria-label*="History" i],
+[aria-label*="Saved" i],
+[aria-label*="Copy" i],
+[aria-label*="Search" i],
+[aria-label*="keyboard" i],
+[aria-label*="input" i] {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  background: transparent !important;
+  box-shadow: none !important;
+}
+
+.brilXb,
+.nYkDR,
+.PsfnLc,
+.nIvUSc,
+.LjDxcd:not(:disabled),
+.pwKYW {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+  filter: none !important;
+  background: transparent !important;
+  border-color: var(--mt-border) !important;
+}
+
+[aria-label*="Turn on Virtual Keyboard" i],
+[aria-label*="Select Input Tool" i],
+[aria-label*="Search with Google" i] {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+[aria-label*="Turn on Virtual Keyboard" i]:hover,
+[aria-label*="Select Input Tool" i]:hover,
+[aria-label*="Search with Google" i]:hover {
+  background: color-mix(in srgb, var(--mt-text) 10%, transparent) !important;
+  color: var(--mt-text) !important;
+}
+
+[aria-label*="Turn on Virtual Keyboard" i] *,
+[aria-label*="Select Input Tool" i] *,
+[aria-label*="Search with Google" i] *,
+[aria-label*="History" i] *,
+[aria-label*="Saved" i] * {
+  opacity: 1 !important;
+}
+
+.ita-kd-icon-button svg,
+.VfPpkd-Bz112c-LgbsSe svg,
+.VfPpkd-LgbsSe svg,
+.brilXb svg,
+.nYkDR svg,
+.PsfnLc svg,
+.nIvUSc svg,
+.LjDxcd:not(:disabled) svg,
+.pwKYW svg,
+[aria-label*="Turn on Virtual Keyboard" i] svg,
+[aria-label*="Select Input Tool" i] svg,
+[aria-label*="Search with Google" i] svg,
+[aria-label*="History" i] svg,
+[aria-label*="Saved" i] svg,
+[aria-label*="Copy" i] svg,
+[aria-label*="Search" i] svg,
+[aria-label*="keyboard" i] svg,
+[aria-label*="input" i] svg {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+  filter: brightness(0) invert(0.92) !important;
+}
+
+.ita-kd-icon-button svg path,
+.ita-kd-icon-button svg line,
+.ita-kd-icon-button svg polyline,
+.ita-kd-icon-button svg polygon,
+.brilXb svg path,
+.brilXb svg line,
+.brilXb svg polyline,
+.brilXb svg polygon,
+.nYkDR svg path,
+.nYkDR svg line,
+.nYkDR svg polyline,
+.nYkDR svg polygon,
+.PsfnLc svg path,
+.PsfnLc svg line,
+.PsfnLc svg polyline,
+.PsfnLc svg polygon,
+.nIvUSc svg path,
+.nIvUSc svg line,
+.nIvUSc svg polyline,
+.nIvUSc svg polygon,
+.LjDxcd:not(:disabled) svg path,
+.LjDxcd:not(:disabled) svg line,
+.LjDxcd:not(:disabled) svg polyline,
+.LjDxcd:not(:disabled) svg polygon,
+.pwKYW svg path,
+.pwKYW svg line,
+.pwKYW svg polyline,
+.pwKYW svg polygon,
+.VfPpkd-Bz112c-LgbsSe svg path,
+.VfPpkd-Bz112c-LgbsSe svg line,
+.VfPpkd-Bz112c-LgbsSe svg polyline,
+.VfPpkd-Bz112c-LgbsSe svg polygon,
+.VfPpkd-LgbsSe svg path,
+.VfPpkd-LgbsSe svg line,
+.VfPpkd-LgbsSe svg polyline,
+.VfPpkd-LgbsSe svg polygon,
+[aria-label*="Turn on Virtual Keyboard" i] svg path,
+[aria-label*="Turn on Virtual Keyboard" i] svg line,
+[aria-label*="Turn on Virtual Keyboard" i] svg polyline,
+[aria-label*="Turn on Virtual Keyboard" i] svg polygon,
+[aria-label*="Select Input Tool" i] svg path,
+[aria-label*="Select Input Tool" i] svg line,
+[aria-label*="Select Input Tool" i] svg polyline,
+[aria-label*="Select Input Tool" i] svg polygon,
+[aria-label*="Search with Google" i] svg path,
+[aria-label*="Search with Google" i] svg line,
+[aria-label*="Search with Google" i] svg polyline,
+[aria-label*="Search with Google" i] svg polygon,
+[aria-label*="History" i] svg path,
+[aria-label*="History" i] svg line,
+[aria-label*="History" i] svg polyline,
+[aria-label*="History" i] svg polygon,
+[aria-label*="Saved" i] svg path,
+[aria-label*="Saved" i] svg line,
+[aria-label*="Saved" i] svg polyline,
+[aria-label*="Saved" i] svg polygon,
+[aria-label*="Copy" i] svg path,
+[aria-label*="Copy" i] svg line,
+[aria-label*="Copy" i] svg polyline,
+[aria-label*="Copy" i] svg polygon,
+[aria-label*="Search" i] svg path,
+[aria-label*="Search" i] svg line,
+[aria-label*="Search" i] svg polyline,
+[aria-label*="Search" i] svg polygon,
+[aria-label*="keyboard" i] svg path,
+[aria-label*="keyboard" i] svg line,
+[aria-label*="keyboard" i] svg polyline,
+[aria-label*="keyboard" i] svg polygon,
+[aria-label*="input" i] svg path,
+[aria-label*="input" i] svg line,
+[aria-label*="input" i] svg polyline,
+[aria-label*="input" i] svg polygon {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+[aria-label*="Turn on Virtual Keyboard" i] svg *,
+[aria-label*="Select Input Tool" i] svg *,
+[aria-label*="Search with Google" i] svg *,
+[aria-label*="History" i] svg *,
+[aria-label*="Saved" i] svg *,
+.brilXb svg *,
+.nYkDR svg *,
+.PsfnLc svg *,
+.nIvUSc svg *,
+.LjDxcd:not(:disabled) svg *,
+.pwKYW svg * {
+  opacity: 1 !important;
+}
+
+button[aria-label="Search with Google"],
+button[aria-label="Search with Google"] .VfPpkd-Bz112c-Jh9lGc,
+button[aria-label="Search with Google"] .VfPpkd-Bz112c-J1Ukfc-LhBDec,
+button[aria-label="Search with Google"] .VfPpkd-Bz112c-RLmnJb,
+button[aria-label="Search with Google"] .notranslate,
+button[aria-label="Search with Google"] .NMm5M {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  border-color: var(--mt-border) !important;
+  box-shadow: none !important;
+}
+
+button[aria-label="Search with Google"] svg,
+button[aria-label="Search with Google"] svg * {
+  opacity: 1 !important;
+  fill: var(--mt-text) !important;
+  stroke: var(--mt-text) !important;
+  filter: none !important;
+}
+
+a.mqNsCe,
+a.mqNsCe .TcXXXb,
+a.mqNsCe .ySES5,
+a.mqNsCe .TYVfy,
+a.mqNsCe .ByxGQ,
+a.mqNsCe .u8ohr,
+a.mqNsCe .NMm5M,
+a.mqNsCe svg,
+a.mqNsCe svg * {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+}
+
+a.mqNsCe .ySES5 {
+  background: transparent !important;
+  border-color: var(--mt-border) !important;
+  box-shadow: none !important;
+}
+
+a.mqNsCe svg,
+a.mqNsCe svg * {
+  fill: var(--mt-text) !important;
+  stroke: var(--mt-text) !important;
+  filter: none !important;
+}
+
+a.mqNsCe .ByxGQ path:first-child,
+a.mqNsCe .u8ohr path:first-child {
+  fill: var(--mt-text) !important;
+  stroke: var(--mt-text) !important;
+}
+
+a.mqNsCe .ByxGQ path[fill="none"],
+a.mqNsCe .u8ohr path[fill="none"] {
+  fill: none !important;
+  stroke: none !important;
+}
+
+.ita-kd-icon-button.ita-kd-inputtool-icon,
+.ita-kd-icon-button.ita-kd-dropdown {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+}
+
+.ita-kd-icon-button.ita-kd-inputtool-icon .ita-kd-img,
+.ita-kd-icon-button.ita-kd-dropdown .ita-kd-img,
+.ita-kd-icon-button.ita-kd-inputtool-icon .ita-kd-icon-span,
+.ita-kd-icon-button.ita-kd-dropdown .ita-kd-icon-span {
+  opacity: 1 !important;
+  filter: brightness(0) invert(0.94) !important;
+}
+
+button[aria-label="Search with Google"],
+button[aria-label="Search with Google"] .VfPpkd-Bz112c-Jh9lGc,
+button[aria-label="Search with Google"] .VfPpkd-Bz112c-J1Ukfc-LhBDec,
+button[aria-label="Search with Google"] .VfPpkd-Bz112c-RLmnJb,
+button[aria-label="Search with Google"] .notranslate,
+button[aria-label="Search with Google"] .NMm5M {
+  color: var(--mt-text) !important;
+  opacity: 1 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+  filter: none !important;
+}
+
+button[aria-label="Search with Google"] {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+button[aria-label="Search with Google"] svg,
+button[aria-label="Search with Google"] svg * {
+  fill: var(--mt-text) !important;
+  stroke: var(--mt-text) !important;
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+button[aria-label="Search with Google"]:hover,
+button[aria-label="Search with Google"]:focus-visible {
+  background: color-mix(in srgb, var(--mt-text) 10%, transparent) !important;
+}
+
+button[aria-label="Search with Google"] .notranslate {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+button[aria-label="Search with Google"] .mt-google-glyph,
+button[aria-label="Search with Google"] .mt-google-glyph * {
+  fill: var(--mt-text) !important;
+  stroke: none !important;
+  opacity: 1 !important;
+}
+
+button[aria-label="Search with Google"] .mt-google-glyph {
+  display: block !important;
+  width: 24px !important;
+  height: 24px !important;
+}

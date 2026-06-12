@@ -19,15 +19,15 @@ Capture: `Cmd+Shift+P` → type "Capture screenshot" → Enter.
 
 ## Per-Extension Instructions
 
-### Dark Theme for Google Translate
+### Midnight Translate
 
-This is the easiest. The dark theme transforms the entire page.
+This is still one of the easier screenshots because the theme changes the whole page.
 
 **What to capture:**
 
 1. Open `translate.google.com`, translate a real phrase (e.g. English → Spanish: "Hello, how are you?")
-2. Make sure the moon toggle is visible in the header (top-right)
-3. Ensure dark mode is active
+2. Make sure the floating `Midnight Translate` toggle is visible
+3. Ensure night mode is active
 4. Capture the full page at 1280×800
 
 **Tip:** Pick a translation that shows different text lengths in both textareas — looks more "real."
@@ -102,7 +102,7 @@ After capturing:
 2. Name descriptively: `screenshot-1.png`, `screenshot-2.png`
 3. Place in each extension's `store-assets/` directory:
    ```
-   google-translate-dark/store-assets/screenshot-1.png
+   midnight-translate/store-assets/screenshot-1.png
    pasteguard/store-assets/screenshot-1.png
    seo-shot/store-assets/screenshot-1.png
    ```

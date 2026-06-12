@@ -21,8 +21,8 @@ If you're a solo builder too, you can use these as-is, fork them, or read the so
 |---|---|---|
 | [css-peek](./css-peek) | Hover any element to see its CSS properties. Box model, fonts, colors. Click to copy selector. | `activeTab`, `scripting` |
 | [seo-shot](./seo-shot) | Instant on-page SEO snapshot. 12 checks, score out of 100. Pure DOM — no API. | `activeTab`, `scripting` |
-| [pasteguard](./pasteguard) | Stop pasting API keys and secrets into AI chats. Warns, masks, or blocks. 15 patterns across 20 AI sites. | `storage`, `scripting`, `activeTab` |
-| [google-translate-dark](./google-translate-dark) | Calm, very-dark theme for Google Translate. Toggle button + 8-color accent picker. | `storage`, `scripting` |
+| [pasteguard](./pasteguard) | Stop pasting API keys and secrets into AI chats. Warns, masks, or blocks. 15 patterns across 20 AI sites. | `storage` |
+| [midnight-translate](./midnight-translate) | Soft midnight theme for Google Translate. Floating toggle + accent color picker. | `storage` |
 
 ## Structure
 
@@ -55,14 +55,13 @@ chromext/
 │   ├── background.js         # Service worker, badge counter
 │   ├── popup/                # Settings UI
 │   └── icons/
-└── google-translate-dark/
+└── midnight-translate/
     ├── README.md
     ├── manifest.json
-    ├── darkmode.css          # 406 exact Google DOM selectors
-    ├── content.js            # Toggle button + accent injection
-    ├── content.css           # Button animations
-    ├── background.js         # Dynamic CSS injection
-    ├── popup/                # Accent color picker
+    ├── darkmode.css          # Night theme tokens + targeted UI overrides
+    ├── content.js            # Floating toggle + storage-driven theme state
+    ├── content.css           # Floating toggle styling
+    ├── popup/                # Theme toggle + accent color picker
     └── icons/
 ```
 

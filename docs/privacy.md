@@ -54,9 +54,8 @@ Each extension requests only the minimum permissions needed:
 </div>
 
 <div class="ext-card" style="margin-bottom: 16px">
-  <strong>Google Translate Dark</strong>
-  <p><code>storage</code> — save accent color and toggle state<br>
-  <code>scripting</code> — inject dark CSS on translate.google.*</p>
+  <strong>Midnight Translate</strong>
+  <p><code>storage</code> — save accent color and theme state on supported Google Translate pages</p>
 </div>
 
 No extension requests "Read and change all data on all websites."
@@ -72,7 +71,7 @@ Every line of code is public. You can inspect exactly what each extension does:
 - [CSS Peek source](https://github.com/srmdn/chromext/tree/master/css-peek)
 - [PasteGuard source](https://github.com/srmdn/chromext/tree/master/pasteguard)
 - [SEO Shot source](https://github.com/srmdn/chromext/tree/master/seo-shot)
-- [Google Translate Dark source](https://github.com/srmdn/chromext/tree/master/google-translate-dark)
+- [Midnight Translate source](https://github.com/srmdn/chromext/tree/master/midnight-translate)
 
 ## Contact
 

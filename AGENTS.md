@@ -11,7 +11,7 @@
   - `css-peek/`
   - `seo-shot/`
   - `pasteguard/`
-  - `google-translate-dark/`
+  - `midnight-translate/`
 - Each extension is published to the Chrome Web Store as its own separate item.
 - Repo root contains shared docs, scripts, and project-wide metadata.
 - `docs/` is the VitePress site for landing page, privacy page, and screenshots/docs.
@@ -68,7 +68,7 @@
   - `seo-shot-v1.0.0`
   - `pasteguard-v1.0.0`
   - `css-peek-v1.0.0`
-  - `google-translate-dark-v1.0.0`
+  - `midnight-translate-v1.0.0`
 - Optional repo-wide milestone tags are allowed for grouped launches, for example:
   - `chromext-2026-06-launch`
 - Extension manifest versions remain the source of truth for CWS uploads.

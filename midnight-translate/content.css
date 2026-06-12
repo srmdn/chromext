@@ -1,0 +1,65 @@
+#mt-floating-toggle {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2147483647;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background:
+    linear-gradient(180deg, rgba(18, 25, 34, 0.94), rgba(10, 14, 20, 0.96));
+  color: #f3f6fb;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+  font: 600 13px/1.1 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease,
+    opacity 160ms ease;
+}
+
+#mt-floating-toggle:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.34);
+}
+
+#mt-floating-toggle:focus-visible {
+  outline: 2px solid var(--mt-accent, #7cc0ff);
+  outline-offset: 3px;
+}
+
+#mt-floating-toggle[data-state="off"] {
+  opacity: 0.78;
+  background:
+    linear-gradient(180deg, rgba(240, 243, 247, 0.94), rgba(226, 231, 238, 0.96));
+  color: #203040;
+  border-color: rgba(32, 48, 64, 0.14);
+}
+
+#mt-floating-toggle .mt-toggle-mark {
+  width: 26px;
+  height: 26px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+}
+
+#mt-floating-toggle .mt-toggle-icon {
+  display: block;
+  width: 26px;
+  height: 26px;
+}
+
+#mt-floating-toggle .mt-toggle-label {
+  white-space: nowrap;
+}
+
+.mt-selected {
+  color: var(--mt-accent, #7cc0ff) !important;
+}

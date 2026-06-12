@@ -67,7 +67,7 @@ node scripts/export-icons.mjs
 - Manifest examples:
   - [seo-shot/manifest.json](../seo-shot/manifest.json)
   - [pasteguard/manifest.json](../pasteguard/manifest.json)
-  - [google-translate-dark/manifest.json](../google-translate-dark/manifest.json)
+  - [midnight-translate/manifest.json](../midnight-translate/manifest.json)
 
 ## Before You Commit
 

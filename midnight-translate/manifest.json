@@ -1,48 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "Dark Theme for Google Translate",
+  "name": "Midnight Translate",
   "version": "1.0.0",
-  "description": "A calm, very-dark theme for Google Translate. Toggle with the moon/sun button.",
+  "description": "A soft midnight theme for Google Translate with accent color controls and a floating toggle.",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
-  "background": {
-    "service_worker": "background.js"
-  },
   "permissions": [
-    "storage",
-    "scripting"
-  ],
-  "host_permissions": [
-    "*://translate.google.com/*",
-    "*://translate.google.co.id/*",
-    "*://translate.google.co.jp/*",
-    "*://translate.google.co.kr/*",
-    "*://translate.google.de/*",
-    "*://translate.google.fr/*",
-    "*://translate.google.es/*",
-    "*://translate.google.it/*",
-    "*://translate.google.nl/*",
-    "*://translate.google.pl/*",
-    "*://translate.google.pt/*",
-    "*://translate.google.ru/*",
-    "*://translate.google.cn/*",
-    "*://translate.google.com.br/*",
-    "*://translate.google.com.tr/*",
-    "*://translate.google.com.ar/*",
-    "*://translate.google.com.mx/*",
-    "*://translate.google.ca/*",
-    "*://translate.google.com.au/*",
-    "*://translate.google.co.uk/*",
-    "*://translate.google.co.in/*",
-    "*://translate.google.co.th/*",
-    "*://translate.google.co.vn/*",
-    "*://translate.google.co.za/*",
-    "*://translate.google.com.sg/*",
-    "*://translate.google.com.ph/*",
-    "*://translate.google.com.ua/*"
+    "storage"
   ],
   "content_scripts": [
     {
@@ -111,12 +78,12 @@
         "*://translate.google.com.ph/*",
         "*://translate.google.com.ua/*"
       ],
-      "resources": ["icons/*"]
+      "resources": ["darkmode.css"]
     }
   ],
   "action": {
     "default_popup": "popup/popup.html",
-    "default_title": "Dark Theme for Google Translate",
+    "default_title": "Midnight Translate",
     "default_icon": {
       "16": "icons/icon16.png",
       "32": "icons/icon32.png"
