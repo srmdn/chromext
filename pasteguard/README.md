@@ -2,6 +2,8 @@
 
 Stop pasting API keys and secrets into AI chats.
 
+![PasteGuard screenshot](../docs/public/screenshots/pasteguard.jpg)
+
 ## What it does
 
 Scans pasted text locally when you paste into supported AI chat interfaces in Chrome. If secrets are detected, it shows a warning and lets you mask them before the paste goes through — or blocks the paste entirely.

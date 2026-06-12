@@ -2,6 +2,8 @@
 
 Midnight Translate adds a soft midnight theme to Google Translate with a floating page toggle and accent color controls.
 
+![Midnight Translate screenshot](../docs/public/screenshots/midnight-translate.jpg)
+
 ## What it does
 
 - Adds a night theme to supported `translate.google.*` pages

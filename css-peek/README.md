@@ -2,6 +2,8 @@
 
 Hover over any element to see its CSS properties. Click to copy a CSS selector to your clipboard.
 
+![CSS Peek screenshot](../docs/public/screenshots/css-peek.jpg)
+
 ## What it does
 
 - **Hover** any element → floating tooltip shows tag, classes, box model, font, colors, dimensions

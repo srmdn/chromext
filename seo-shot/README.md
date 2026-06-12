@@ -2,6 +2,8 @@
 
 Instant on-page SEO snapshot. Score out of 100 with actionable fixes. No API needed — pure DOM scanning.
 
+![SEO Shot screenshot](../docs/public/screenshots/seo-shot.jpg)
+
 ## What it checks
 
 | Check | Detail |
