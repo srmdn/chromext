@@ -3,7 +3,7 @@ import { defineConfig } from "vitepress";
 export default defineConfig({
   title: "chromext",
   description:
-    "Free, open-source Chrome extensions for solo builders. Minimal permissions, zero tracking, MIT licensed.",
+    "Free, open-source Chrome extensions for solo builders. Minimal permissions, zero tracking, GPL-3.0 licensed.",
   lang: "en-US",
   base: "/chromext/",
   lastUpdated: true,
@@ -46,7 +46,7 @@ export default defineConfig({
     ],
 
     footer: {
-      message: "Released under the MIT License.",
+      message: "Released under the GNU GPL v3.0.",
       copyright: "Copyright © 2026 srmdn",
     },
 

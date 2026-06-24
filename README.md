@@ -70,7 +70,7 @@ chromext/
 - **Minimal permissions** — every extension requests only what it needs
 - **No data collection** — zero tracking, zero analytics, zero network calls
 - **Manifest V3** — current Chrome extension standard
-- **MIT licensed** — use, modify, ship freely
+- **GPL-3.0 licensed** — use, modify, and redistribute under copyleft terms
 - **Self-documenting** — each extension has its own README
 
 ## Publishing
