@@ -50,6 +50,7 @@ features:
   <h3>🔍 SEO Shot</h3>
   <p>Instant on-page SEO snapshot. Score out of 100 with actionable fixes. Pure DOM scanning — no API keys, no signup, no external calls.</p>
   <p><strong>12 checks</strong> — title, meta description, H1, heading hierarchy, image alt text, Open Graph, Twitter Card, canonical URL, robots meta, structured data, mobile viewport, language.</p>
+  <p><strong>Heuristic score</strong> — useful for page-by-page QA, not a Google ranking formula or full-site audit.</p>
   <div class="ext-perms">
     <span class="perm-badge">activeTab</span>
     <span class="perm-badge">scripting</span>

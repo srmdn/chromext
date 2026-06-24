@@ -16,7 +16,7 @@ Paste interception warning on a supported AI chat page before secrets leak.
 
 ## SEO Shot
 
-Popup-based on-page SEO scan with score and checklist.
+Popup-based on-page SEO scan with a heuristic score and checklist for the current page.
 
 ![SEO Shot screenshot](/screenshots/seo-shot.jpg)
 
