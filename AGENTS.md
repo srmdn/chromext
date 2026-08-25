@@ -28,7 +28,7 @@
 
 ## Commands
 
-- Prefer `rtk <command>` when applicable.
+- Use native commands directly.
 - Docs site:
   - `npm run dev`
   - `npm run build`
